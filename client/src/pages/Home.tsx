@@ -88,7 +88,10 @@ export default function Home() {
         </nav>
 
         {/* Hero Section — matches logo layout: JACK (silver) MARTIN (orange) */}
-        <section id="about" className="min-h-screen flex items-center pt-24">
+        <section id="about" className="min-h-screen flex items-center pt-24" itemScope itemType="https://schema.org/Person">
+          <meta itemProp="name" content="Jack Martin" />
+          <meta itemProp="jobTitle" content="AI Consultant & AI Automator" />
+          <meta itemProp="description" content="South African AI consultant specialising in AI automation, LLM workflows, agentic AI systems, and digital transformation." />
           <div className="container">
             <motion.div initial="hidden" animate="visible" className="max-w-4xl">
               <motion.p variants={fadeUp} custom={0} className="font-[family-name:var(--font-heading)] text-xs font-medium uppercase tracking-[0.25em] text-[#6b7080] mb-6">
@@ -99,7 +102,7 @@ export default function Home() {
                 <span className="text-[#e8833a]">MARTIN</span>
               </motion.h1>
               <motion.p variants={fadeUp} custom={2} className="text-lg text-[#8a8f9a] max-w-2xl leading-relaxed mb-8">
-                10+ years leveraging technology to empower individuals, businesses, and communities. Bridging psychology, AI-driven innovation, and digital transformation to create scalable solutions.
+                South Africa's AI consultant and AI automator with 10+ years experience. I design and deploy AI-driven systems for marketing automation, predictive analytics, and workflow optimisation — bridging psychology, technology, and digital transformation to create scalable solutions.
               </motion.p>
               <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-3 mb-10">
                 <a href="/manus-storage/Jack_Martin_CV_Final_e1fbbd18.pdf" download="Jack_Martin_CV.pdf" className="inline-flex items-center gap-2 px-5 py-2.5 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors">
