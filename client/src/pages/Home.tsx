@@ -48,8 +48,8 @@ export default function Home() {
         {/* Navigation */}
         <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0b1224]/80 border-b border-[#e8833a]/10">
           <div className="container flex items-center justify-between py-4">
-            <a href="#" className="font-[family-name:var(--font-display)] font-bold text-xl text-white">
-              J<span className="text-[#e8833a]">M</span>
+            <a href="#" className="flex items-center">
+              <img src="/manus-storage/jm-logo_e1ab2810.png" alt="Jack Martin" className="h-10 w-auto" />
             </a>
             <div className="hidden md:flex items-center gap-8 text-sm text-white/60">
               <a href="#about" className="hover:text-[#e8833a] transition-colors">About</a>
@@ -285,8 +285,9 @@ export default function Home() {
         {/* Footer */}
         <footer className="py-12 border-t border-white/5">
           <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-white/30 text-sm">
-              Jack Martin · <span className="text-[#e8833a]">Digital Strategist & AI Consultant</span>
+            <div className="flex items-center gap-3 text-white/30 text-sm">
+              <img src="/manus-storage/jm-logo_e1ab2810.png" alt="Jack Martin" className="h-8 w-auto opacity-50" />
+              <span>Jack Martin · <span className="text-[#e8833a]">Digital Strategist & AI Consultant</span></span>
             </div>
             <div className="flex items-center gap-4">
               <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="text-white/30 hover:text-[#e8833a] transition-colors"><Github size={18} /></a>
