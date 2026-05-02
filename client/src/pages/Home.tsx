@@ -135,7 +135,7 @@ export default function Home() {
               {/* Contact Info */}
               <motion.div variants={fadeUp} custom={6} className="flex flex-wrap gap-5 text-sm text-[#6b7080]">
                 <span className="flex items-center gap-2"><MapPin size={14} className="text-[#2d6ca6]" /> Paarl, Western Cape</span>
-                <span className="flex items-center gap-2"><Phone size={14} className="text-[#2d6ca6]" /> +27 767 337 890</span>
+                <span className="flex items-center gap-2"><Phone size={14} className="text-[#2d6ca6]" /> +27 671 334 194</span>
                 <span className="flex items-center gap-2"><Mail size={14} className="text-[#e8833a]" /> jack@jackmartin.co.za</span>
                 <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#d8dce4] transition-colors"><Linkedin size={14} className="text-[#2d6ca6]" /> LinkedIn</a>
                 <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#d8dce4] transition-colors"><Github size={14} className="text-[#c8ccd4]" /> GitHub</a>
@@ -293,7 +293,7 @@ export default function Home() {
 
 
         {/* WhatsApp */}
-        <a href="https://wa.me/27767337890" target="_blank" rel="noopener" className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/25 hover:scale-110 transition-transform" aria-label="Chat on WhatsApp">
+        <a href="https://wa.me/27671334194" target="_blank" rel="noopener" className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/25 hover:scale-110 transition-transform" aria-label="Chat on WhatsApp">
           <MessageCircle size={26} className="text-white" />
         </a>
 
@@ -323,7 +323,7 @@ export default function Home() {
                 <h4 className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.15em] text-[#d8dce4] mb-4">Contact</h4>
                 <div className="space-y-2 text-sm text-[#6b7080]">
                   <p className="flex items-center gap-2"><Mail size={14} className="text-[#e8833a]" /> jack@jackmartin.co.za</p>
-                  <p className="flex items-center gap-2"><Phone size={14} className="text-[#2d6ca6]" /> +27 767 337 890</p>
+                  <p className="flex items-center gap-2"><Phone size={14} className="text-[#2d6ca6]" /> +27 671 334 194</p>
                   <p className="flex items-center gap-2"><MapPin size={14} className="text-[#2d6ca6]" /> Paarl, Western Cape, South Africa</p>
                   <div className="flex items-center gap-3 mt-3">
                     <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="text-[#6b7080] hover:text-[#2d6ca6] transition-colors"><Linkedin size={18} /></a>
