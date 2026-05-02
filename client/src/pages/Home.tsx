@@ -71,7 +71,7 @@ export default function Home() {
               <a href="#portfolio" className="hover:text-[#e8833a] transition-colors">Portfolio</a>
               <a href="#contact" className="hover:text-[#d8dce4] transition-colors">Contact</a>
             </div>
-            <a href="https://calendly.com" target="_blank" rel="noopener" className="font-[family-name:var(--font-heading)] text-[11px] font-semibold uppercase tracking-[0.1em] px-5 py-2.5 rounded bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors flex items-center gap-2">
+            <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="font-[family-name:var(--font-heading)] text-[11px] font-semibold uppercase tracking-[0.1em] px-5 py-2.5 rounded bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors flex items-center gap-2">
               <Calendar size={13} /> Book a Discovery Call
             </a>
           </div>
@@ -114,7 +114,7 @@ export default function Home() {
 
               {/* CTAs */}
               <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-3 mb-8">
-                <a href="https://calendly.com" target="_blank" rel="noopener" className="inline-flex items-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors">
+                <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="inline-flex items-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors">
                   <Calendar size={14} /> Book a Discovery Call
                 </a>
                 <a href="/manus-storage/Jack_Martin_CV_Final_e1fbbd18.pdf" download="Jack_Martin_CV.pdf" className="inline-flex items-center gap-2 px-5 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-transparent text-[#c8ccd4] border border-[#c8ccd4]/20 hover:border-[#c8ccd4]/40 transition-colors">
@@ -331,7 +331,7 @@ export default function Home() {
                     <a href="https://bold.pro/my/johnhenryjack-martin" target="_blank" rel="noopener" className="text-[#6b7080] hover:text-[#e8833a] transition-colors"><Globe size={18} /></a>
                   </div>
                 </div>
-                <a href="https://calendly.com" target="_blank" rel="noopener" className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.1em] bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors">
+                <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.1em] bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors">
                   <Calendar size={12} /> Book a Call
                 </a>
               </div>
