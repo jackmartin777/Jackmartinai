@@ -1,6 +1,15 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Globe, Download, MessageCircle } from "lucide-react";
 
+/*
+ * DESIGN SYSTEM — matched to JM logo palette:
+ * Navy bg:       #0c1525 / #111d33
+ * Silver text:   #c0c4cc (body) / #e8eaef (headings)
+ * Burnt orange:  #e8833a (primary accent — the M arrow)
+ * Circuit blue:  #4da6e8 (secondary accent — the J's neural nodes)
+ * Chrome:        #b8bcc5 (subtle metallic feel)
+ */
+
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
@@ -10,12 +19,10 @@ const fadeUp = {
 };
 
 const projects = [
-  // Websites Built
   { name: "Godspeed Digital Agency", description: "Full-service digital agency website — SEO, AI content strategy, and marketing automation services.", tech: ["TypeScript", "React", "Tailwind"], category: "Website Built", url: "https://github.com/jackmartin777/godspeed-digital-agency" },
   { name: "MyFiladelfia 2026", description: "Training institution website — QCTO-accredited courses, student portal, and online applications.", tech: ["TypeScript", "React", "CMS"], category: "Website Built", url: "https://github.com/jackmartin777/2026-newmyfiladelfia-page" },
   { name: "Golden Journeys", description: "Travel and tourism website showcasing curated South African experiences.", tech: ["React", "Design", "CMS"], category: "Website Built", url: "https://github.com/jackmartin777/Golden-Journeys" },
   { name: "Kunsmatige Intelligensie", description: "AI education platform built with StackBlitz — making AI accessible in Afrikaans.", tech: ["TypeScript", "StackBlitz", "Education"], category: "Website Built", url: "https://github.com/jackmartin777/kunsmatigeintelligensie" },
-  // AI & Automation
   { name: "Agentic Marketing Optimisation", description: "ML + automation pipeline for real-time campaign decisions and predictive prioritisation.", tech: ["Python", "Flask", "ML", "APIs"], category: "AI & Automation", url: "https://github.com/jackmartin777/software-income-playbooks" },
   { name: "Project N.O.M.A.D", description: "Self-contained, offline survival computer packed with critical tools, knowledge, and AI.", tech: ["TypeScript", "AI", "Offline-First"], category: "AI & Automation", url: "https://github.com/jackmartin777/project-nomad" },
   { name: "Everything Claude Code", description: "Agent harness performance optimization — skills, instincts, memory, and research-first development.", tech: ["JavaScript", "AI Agents", "Claude"], category: "AI & Automation", url: "https://github.com/jackmartin777/everything-claude-code" },
@@ -29,9 +36,18 @@ const projects = [
   { name: "Software Income Playbooks", description: "Curated monetization playbooks and API ideas for founders, agencies, and automation builders.", tech: ["JavaScript", "Business", "APIs"], category: "Business & Strategy", url: "https://github.com/jackmartin777/software-income-playbooks" },
 ];
 
+// Category badge colours — circuit blue for tech, orange for business
+const categoryColor: Record<string, string> = {
+  "Website Built": "text-[#4da6e8] bg-[#4da6e8]/8 border-[#4da6e8]/20",
+  "AI & Automation": "text-[#e8833a] bg-[#e8833a]/8 border-[#e8833a]/20",
+  "GitHub Fork": "text-[#b8bcc5] bg-[#b8bcc5]/8 border-[#b8bcc5]/15",
+  "Education & Ministry": "text-[#4da6e8] bg-[#4da6e8]/8 border-[#4da6e8]/20",
+  "Business & Strategy": "text-[#e8833a] bg-[#e8833a]/8 border-[#e8833a]/20",
+};
+
 export default function Home() {
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden bg-[#0c1525]">
       {/* Background watermark */}
       <div
         className="fixed inset-0 z-0 opacity-[0.10] pointer-events-none"
@@ -43,54 +59,58 @@ export default function Home() {
         }}
       />
 
-      {/* Content */}
       <div className="relative z-10">
-        {/* Navigation */}
-        <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0b1224]/80 border-b border-[#e8833a]/10">
-          <div className="container flex items-center justify-between py-4">
+        {/* Navigation — logo bigger */}
+        <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0c1525]/85 border-b border-[#4da6e8]/8">
+          <div className="container flex items-center justify-between py-3">
             <a href="#" className="flex items-center">
-              <img src="/manus-storage/jm-logo_e1ab2810.png" alt="Jack Martin" className="h-10 w-auto" />
+              <img src="/manus-storage/jm-logo_e1ab2810.png" alt="Jack Martin" className="h-14 w-auto" />
             </a>
-            <div className="hidden md:flex items-center gap-8 text-sm text-white/60">
+            <div className="hidden md:flex items-center gap-8 text-sm text-[#b8bcc5]/70">
               <a href="#about" className="hover:text-[#e8833a] transition-colors">About</a>
-              <a href="#ai" className="hover:text-[#e8833a] transition-colors">AI & Automation</a>
+              <a href="#ai" className="hover:text-[#4da6e8] transition-colors">AI & Automation</a>
               <a href="#experience" className="hover:text-[#e8833a] transition-colors">Experience</a>
-              <a href="#portfolio" className="hover:text-[#e8833a] transition-colors">Portfolio & Forks</a>
+              <a href="#portfolio" className="hover:text-[#4da6e8] transition-colors">Portfolio & Forks</a>
               <a href="#education" className="hover:text-[#e8833a] transition-colors">Education</a>
             </div>
-            <a href="mailto:jack@jackmartin.co.za" className="text-sm px-4 py-2 rounded-lg bg-[#e8833a] text-white font-semibold hover:bg-[#f5a623] transition-colors shadow-lg shadow-[#e8833a]/20">
+            <a href="mailto:jack@jackmartin.co.za" className="text-sm px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#e8833a] to-[#f0993f] text-white font-semibold hover:from-[#f0993f] hover:to-[#e8833a] transition-all shadow-lg shadow-[#e8833a]/20">
               Get in Touch
             </a>
           </div>
         </nav>
 
         {/* Hero Section */}
-        <section id="about" className="min-h-screen flex items-center pt-20">
+        <section id="about" className="min-h-screen flex items-center pt-24">
           <div className="container">
             <motion.div initial="hidden" animate="visible" className="max-w-4xl">
-              <motion.p variants={fadeUp} custom={0} className="text-[#e8833a] font-[family-name:var(--font-mono)] text-sm tracking-wider uppercase mb-4">
-                Digital Strategist · AI Consultant · Human-Centered Innovator
+              <motion.p variants={fadeUp} custom={0} className="font-[family-name:var(--font-mono)] text-sm tracking-wider uppercase mb-4">
+                <span className="text-[#b8bcc5]">AI Consultant</span>
+                <span className="text-[#4da6e8] mx-2">·</span>
+                <span className="text-[#e8833a]">Digital Strategist</span>
+                <span className="text-[#4da6e8] mx-2">·</span>
+                <span className="text-[#b8bcc5]">Human Centred</span>
               </motion.p>
-              <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-display)] font-extrabold text-5xl md:text-7xl lg:text-8xl text-white leading-[0.95] mb-6">
-                Jack <span className="text-[#e8833a]">Martin</span>
+              <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-display)] font-extrabold text-5xl md:text-7xl lg:text-8xl leading-[0.95] mb-6">
+                <span className="text-[#e8eaef]">Jack </span>
+                <span className="text-[#e8833a]">Martin</span>
               </motion.h1>
-              <motion.p variants={fadeUp} custom={2} className="text-lg md:text-xl text-white/60 max-w-2xl leading-relaxed mb-8">
+              <motion.p variants={fadeUp} custom={2} className="text-lg md:text-xl text-[#b8bcc5]/65 max-w-2xl leading-relaxed mb-8">
                 10+ years leveraging technology to empower individuals, businesses, and communities. Bridging psychology, AI-driven innovation, and digital transformation to create scalable solutions.
               </motion.p>
               <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-3 mb-10">
-                <a href="/manus-storage/Jack_Martin_CV_Final_e1fbbd18.pdf" download="Jack_Martin_CV.pdf" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#e8833a] text-white font-semibold text-sm hover:bg-[#f5a623] transition-colors shadow-lg shadow-[#e8833a]/20">
+                <a href="/manus-storage/Jack_Martin_CV_Final_e1fbbd18.pdf" download="Jack_Martin_CV.pdf" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#e8833a] to-[#f0993f] text-white font-semibold text-sm hover:shadow-lg hover:shadow-[#e8833a]/30 transition-all">
                   <Download size={16} /> Download CV
                 </a>
-                <a href="/manus-storage/Jack_Martin_CV_Monochrome_70d3e2e7.pdf" download="Jack_Martin_CV_Monochrome.pdf" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/10 text-white font-semibold text-sm hover:bg-white/20 transition-colors border border-white/20">
+                <a href="/manus-storage/Jack_Martin_CV_Monochrome_70d3e2e7.pdf" download="Jack_Martin_CV_Monochrome.pdf" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#b8bcc5]/10 text-[#b8bcc5] font-semibold text-sm hover:bg-[#b8bcc5]/20 transition-colors border border-[#b8bcc5]/20">
                   <Download size={16} /> Monochrome CV
                 </a>
               </motion.div>
-              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-4 text-sm text-white/50">
-                <span className="flex items-center gap-2"><MapPin size={14} className="text-[#e8833a]" /> Paarl, Western Cape</span>
-                <span className="flex items-center gap-2"><Phone size={14} className="text-[#e8833a]" /> +27 767 337 890</span>
+              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-4 text-sm text-[#b8bcc5]/50">
+                <span className="flex items-center gap-2"><MapPin size={14} className="text-[#4da6e8]" /> Paarl, Western Cape</span>
+                <span className="flex items-center gap-2"><Phone size={14} className="text-[#4da6e8]" /> +27 767 337 890</span>
                 <span className="flex items-center gap-2"><Mail size={14} className="text-[#e8833a]" /> jack@jackmartin.co.za</span>
-                <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#e8833a] transition-colors"><Linkedin size={14} className="text-[#e8833a]" /> LinkedIn</a>
-                <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#e8833a] transition-colors"><Github size={14} className="text-[#e8833a]" /> GitHub</a>
+                <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#4da6e8] transition-colors"><Linkedin size={14} className="text-[#4da6e8]" /> LinkedIn</a>
+                <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#b8bcc5] transition-colors"><Github size={14} className="text-[#b8bcc5]" /> GitHub</a>
               </motion.div>
             </motion.div>
           </div>
@@ -101,44 +121,42 @@ export default function Home() {
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
               <motion.div variants={fadeUp} custom={0} className="mb-12">
-                <span className="inline-block px-4 py-2 rounded-lg bg-gradient-to-r from-[#e8833a] to-[#f5a623] text-white font-[family-name:var(--font-display)] font-bold text-lg shadow-lg shadow-[#e8833a]/30 mb-4">
+                <span className="inline-block px-5 py-2 rounded-lg bg-gradient-to-r from-[#e8833a] to-[#f0993f] text-white font-[family-name:var(--font-display)] font-bold text-lg shadow-lg shadow-[#e8833a]/25 mb-4">
                   AI & AUTOMATION
                 </span>
-                <p className="text-white/50 text-lg max-w-2xl">
+                <p className="text-[#b8bcc5]/55 text-lg max-w-2xl">
                   Design and deployment of AI-driven systems for marketing, decision-making, and workflow automation. Focused on practical implementation and measurable outcomes.
                 </p>
               </motion.div>
 
               <div className="grid md:grid-cols-2 gap-8 mb-12">
-                <motion.div variants={fadeUp} custom={1} className="bg-[#0b1224]/60 border border-[#e8833a]/15 rounded-xl p-6 backdrop-blur-sm">
-                  <h3 className="font-[family-name:var(--font-display)] font-bold text-[#e8833a] text-sm uppercase tracking-wider mb-4">Capabilities</h3>
-                  <ul className="space-y-2 text-white/75 text-[15px]">
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> End-to-end AI workflows (data → prediction → action)</li>
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> Applied ML (lead scoring, conversion prediction)</li>
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> API-based AI services (Flask, model integration)</li>
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> Automation (Make, Zapier, n8n, Pipedream)</li>
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> Prompt engineering & LLM workflows</li>
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> Agentic AI (multi-agent, memory systems)</li>
+                <motion.div variants={fadeUp} custom={1} className="bg-[#0c1525]/70 border border-[#4da6e8]/12 rounded-xl p-6 backdrop-blur-sm shadow-lg shadow-[#4da6e8]/5">
+                  <h3 className="font-[family-name:var(--font-display)] font-bold text-[#4da6e8] text-sm uppercase tracking-wider mb-4">Capabilities</h3>
+                  <ul className="space-y-2.5 text-[#c0c4cc] text-[15px]">
+                    {["End-to-end AI workflows (data → prediction → action)", "Applied ML (lead scoring, conversion prediction)", "API-based AI services (Flask, model integration)", "Automation (Make, Zapier, n8n, Pipedream)", "Prompt engineering & LLM workflows", "Agentic AI (multi-agent, memory systems)"].map(item => (
+                      <li key={item} className="flex items-start gap-2.5">
+                        <span className="text-[#4da6e8] mt-0.5 text-xs">⚡</span> {item}
+                      </li>
+                    ))}
                   </ul>
                 </motion.div>
-                <motion.div variants={fadeUp} custom={2} className="bg-[#0b1224]/60 border border-[#e8833a]/15 rounded-xl p-6 backdrop-blur-sm">
+                <motion.div variants={fadeUp} custom={2} className="bg-[#0c1525]/70 border border-[#e8833a]/12 rounded-xl p-6 backdrop-blur-sm shadow-lg shadow-[#e8833a]/5">
                   <h3 className="font-[family-name:var(--font-display)] font-bold text-[#e8833a] text-sm uppercase tracking-wider mb-4">Marketing & Data</h3>
-                  <ul className="space-y-2 text-white/75 text-[15px]">
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> AI-driven paid acquisition (Meta, TikTok, YouTube)</li>
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> Funnel optimisation & behavioural tracking</li>
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> Conversion-focused systems & testing</li>
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> Data scoring (conversion readiness, quality)</li>
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> SEO automation & content pipelines</li>
-                    <li className="flex items-start gap-2"><span className="text-[#e8833a] mt-1">⚡</span> Performance analytics & attribution</li>
+                  <ul className="space-y-2.5 text-[#c0c4cc] text-[15px]">
+                    {["AI-driven paid acquisition (Meta, TikTok, YouTube)", "Funnel optimisation & behavioural tracking", "Conversion-focused systems & testing", "Data scoring (conversion readiness, quality)", "SEO automation & content pipelines", "Performance analytics & attribution"].map(item => (
+                      <li key={item} className="flex items-start gap-2.5">
+                        <span className="text-[#e8833a] mt-0.5 text-xs">⚡</span> {item}
+                      </li>
+                    ))}
                   </ul>
                 </motion.div>
               </div>
 
               <motion.div variants={fadeUp} custom={3}>
-                <h3 className="font-[family-name:var(--font-display)] font-bold text-[#e8833a] text-sm uppercase tracking-wider mb-4">Tech Stack</h3>
+                <h3 className="font-[family-name:var(--font-display)] font-bold text-[#b8bcc5] text-sm uppercase tracking-wider mb-4">Tech Stack</h3>
                 <div className="flex flex-wrap gap-2">
                   {["Vibe Coding", "Flask", "Node.js", "Redis", "APIs", "Replit", "Make", "Zapier", "n8n", "Pipedream", "ChatGPT", "Claude", "Perplexity", "Mistral", "DeepSeek"].map(tag => (
-                    <span key={tag} className="font-[family-name:var(--font-mono)] text-xs text-[#e8833a] bg-[#e8833a]/8 border border-[#e8833a]/20 px-3 py-1.5 rounded-md">
+                    <span key={tag} className="font-[family-name:var(--font-mono)] text-xs text-[#4da6e8] bg-[#4da6e8]/6 border border-[#4da6e8]/15 px-3 py-1.5 rounded-md shadow-sm">
                       {tag}
                     </span>
                   ))}
@@ -153,16 +171,16 @@ export default function Home() {
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
-                { num: "98%", label: "Student Pass Rate" },
-                { num: "85%", label: "Graduate Employment" },
-                { num: "10+", label: "Years Digital Strategy" },
-                { num: "15+", label: "Years Cross-Discipline" },
+                { num: "98%", label: "Student Pass Rate", color: "#e8833a" },
+                { num: "85%", label: "Graduate Employment", color: "#e8833a" },
+                { num: "10+", label: "Years Digital Strategy", color: "#4da6e8" },
+                { num: "15+", label: "Years Cross-Discipline", color: "#4da6e8" },
               ].map((stat, i) => (
-                <motion.div key={stat.num} variants={fadeUp} custom={i} className="text-center p-6 rounded-xl bg-[#0b1224]/40 border border-[#e8833a]/10 shadow-lg">
-                  <div className="font-[family-name:var(--font-display)] font-extrabold text-4xl md:text-5xl text-[#e8833a] drop-shadow-[0_2px_8px_rgba(232,131,58,0.3)]">
+                <motion.div key={stat.num} variants={fadeUp} custom={i} className="text-center p-6 rounded-xl bg-[#111d33]/60 border border-white/5 shadow-lg">
+                  <div className="font-[family-name:var(--font-display)] font-extrabold text-4xl md:text-5xl" style={{ color: stat.color, textShadow: `0 2px 12px ${stat.color}33` }}>
                     {stat.num}
                   </div>
-                  <div className="text-white/40 text-sm mt-2">{stat.label}</div>
+                  <div className="text-[#b8bcc5]/40 text-sm mt-2">{stat.label}</div>
                 </motion.div>
               ))}
             </motion.div>
@@ -173,26 +191,26 @@ export default function Home() {
         <section id="experience" className="py-24">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
-              <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-display)] font-extrabold text-3xl md:text-4xl text-[#e8833a] uppercase tracking-wide mb-12 drop-shadow-[0_2px_8px_rgba(232,131,58,0.3)]">
-                Experience
+              <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-display)] font-extrabold text-3xl md:text-4xl uppercase tracking-wide mb-12" style={{ color: '#e8eaef', textShadow: '0 2px 8px rgba(77,166,232,0.2)' }}>
+                Experi<span className="text-[#e8833a]">ence</span>
               </motion.h2>
               <div className="space-y-6">
                 {[
-                  { role: "Founder & Digital Strategist", company: "Godspeed Digital Agency", date: "2019 — Present", bullets: ["AI-driven agency — SEO, automation, paid acquisition", "Increased client revenue via AI-powered transformation", "Funnels, e-learning, AI automation at scale"] },
-                  { role: "Director — Skills Development", company: "MyFiladelfia", date: "2010 — Present", bullets: ["QCTO-accredited — counseling & professional dev", "98% pass rate · 85% post-grad employment", "AI-driven mental health support tools"] },
-                  { role: "Director — Healthcare Ops", company: "De Oude Renbaan Sub-Acute Clinic", date: "2012 — 2024", bullets: ["Operational excellence & regulatory compliance", "Digital solutions for admin & patient care"] },
-                  { role: "Franchise Owner · Research Assistant", company: "Curves Wellington · Synexa Life Sciences · The Doctors Lab, London", date: "2002 — 2010", bullets: ["Biomarker research · Digital marketing for holistic wellness"] },
+                  { role: "Founder & Digital Strategist", company: "Godspeed Digital Agency", date: "2019 — Present", bullets: ["AI-driven agency — SEO, automation, paid acquisition", "Increased client revenue via AI-powered transformation", "Funnels, e-learning, AI automation at scale"], accent: "#e8833a" },
+                  { role: "Director — Skills Development", company: "MyFiladelfia", date: "2010 — Present", bullets: ["QCTO-accredited — counseling & professional dev", "98% pass rate · 85% post-grad employment", "AI-driven mental health support tools"], accent: "#4da6e8" },
+                  { role: "Director — Healthcare Ops", company: "De Oude Renbaan Sub-Acute Clinic", date: "2012 — 2024", bullets: ["Operational excellence & regulatory compliance", "Digital solutions for admin & patient care"], accent: "#b8bcc5" },
+                  { role: "Franchise Owner · Research Assistant", company: "Curves Wellington · Synexa Life Sciences · The Doctors Lab, London", date: "2002 — 2010", bullets: ["Biomarker research · Digital marketing for holistic wellness"], accent: "#b8bcc5" },
                 ].map((exp, i) => (
-                  <motion.div key={i} variants={fadeUp} custom={i + 1} className="bg-[#0b1224]/40 border border-white/5 rounded-xl p-6 border-l-4 border-l-[#e8833a] hover:border-l-[#f5a623] transition-colors shadow-lg">
+                  <motion.div key={i} variants={fadeUp} custom={i + 1} className="bg-[#111d33]/50 border border-white/5 rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl" style={{ borderLeftWidth: '4px', borderLeftColor: exp.accent }}>
                     <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
-                      <h3 className="font-bold text-white text-lg">{exp.role}</h3>
-                      <span className="text-[#e8833a] font-bold text-sm">{exp.date}</span>
+                      <h3 className="font-bold text-[#e8eaef] text-lg">{exp.role}</h3>
+                      <span className="font-bold text-sm" style={{ color: exp.accent }}>{exp.date}</span>
                     </div>
-                    <p className="text-white/40 text-sm mb-3">{exp.company}</p>
+                    <p className="text-[#b8bcc5]/40 text-sm mb-3">{exp.company}</p>
                     <ul className="space-y-1">
                       {exp.bullets.map((b, j) => (
-                        <li key={j} className="text-white/65 text-[15px] flex items-start gap-2">
-                          <span className="text-[#e8833a]">→</span> {b}
+                        <li key={j} className="text-[#c0c4cc]/70 text-[15px] flex items-start gap-2">
+                          <span style={{ color: exp.accent }}>→</span> {b}
                         </li>
                       ))}
                     </ul>
@@ -207,10 +225,10 @@ export default function Home() {
         <section id="portfolio" className="py-24">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
-              <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-display)] font-extrabold text-3xl md:text-4xl text-[#e8833a] uppercase tracking-wide mb-4 drop-shadow-[0_2px_8px_rgba(232,131,58,0.3)]">
-                Portfolio & GitHub Forks
+              <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-display)] font-extrabold text-3xl md:text-4xl uppercase tracking-wide mb-4" style={{ color: '#e8eaef', textShadow: '0 2px 8px rgba(232,131,58,0.2)' }}>
+                Portfolio & GitHub <span className="text-[#4da6e8]">Forks</span>
               </motion.h2>
-              <motion.p variants={fadeUp} custom={1} className="text-white/40 text-lg mb-12 max-w-xl">
+              <motion.p variants={fadeUp} custom={1} className="text-[#b8bcc5]/45 text-lg mb-12 max-w-xl">
                 Websites built, AI systems, automation tools, and curated GitHub forks.
               </motion.p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -222,19 +240,19 @@ export default function Home() {
                     rel="noopener"
                     variants={fadeUp}
                     custom={i + 2}
-                    className="group bg-[#0b1224]/50 border border-white/5 rounded-xl p-5 hover:border-[#e8833a]/30 hover:shadow-xl hover:shadow-[#e8833a]/5 transition-all duration-300 hover:-translate-y-1"
+                    className="group bg-[#111d33]/50 border border-white/5 rounded-xl p-5 hover:border-[#4da6e8]/25 hover:shadow-xl hover:shadow-[#4da6e8]/5 transition-all duration-300 hover:-translate-y-1"
                   >
                     <div className="flex items-start justify-between mb-3">
-                      <span className="text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-wider text-[#e8833a]/60 bg-[#e8833a]/8 px-2 py-0.5 rounded">
+                      <span className={`text-[10px] font-[family-name:var(--font-mono)] uppercase tracking-wider px-2 py-0.5 rounded border ${categoryColor[project.category] || "text-[#b8bcc5] bg-white/5 border-white/10"}`}>
                         {project.category}
                       </span>
-                      <ExternalLink size={14} className="text-white/20 group-hover:text-[#e8833a] transition-colors" />
+                      <ExternalLink size={14} className="text-[#b8bcc5]/20 group-hover:text-[#4da6e8] transition-colors" />
                     </div>
-                    <h3 className="font-bold text-white text-[15px] mb-2 group-hover:text-[#e8833a] transition-colors">{project.name}</h3>
-                    <p className="text-white/40 text-sm leading-relaxed mb-4">{project.description}</p>
+                    <h3 className="font-bold text-[#e8eaef] text-[15px] mb-2 group-hover:text-[#e8833a] transition-colors">{project.name}</h3>
+                    <p className="text-[#b8bcc5]/40 text-sm leading-relaxed mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {project.tech.map(t => (
-                        <span key={t} className="text-[10px] font-[family-name:var(--font-mono)] text-white/30 border border-white/10 px-2 py-0.5 rounded">
+                        <span key={t} className="text-[10px] font-[family-name:var(--font-mono)] text-[#4da6e8]/50 border border-[#4da6e8]/10 px-2 py-0.5 rounded">
                           {t}
                         </span>
                       ))}
@@ -250,8 +268,8 @@ export default function Home() {
         <section id="education" className="py-24">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
-              <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-display)] font-extrabold text-3xl md:text-4xl text-[#e8833a] uppercase tracking-wide mb-12 drop-shadow-[0_2px_8px_rgba(232,131,58,0.3)]">
-                Education
+              <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-display)] font-extrabold text-3xl md:text-4xl uppercase tracking-wide mb-12" style={{ color: '#e8eaef', textShadow: '0 2px 8px rgba(77,166,232,0.2)' }}>
+                Educa<span className="text-[#4da6e8]">tion</span>
               </motion.h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
@@ -260,10 +278,10 @@ export default function Home() {
                   { degree: "Bachelor of Science", school: "Stellenbosch University", year: "1999 — 2001", current: false },
                   { degree: "Cert. Digital Marketing", school: "Elite Inc.", year: "2019", current: false },
                 ].map((edu, i) => (
-                  <motion.div key={i} variants={fadeUp} custom={i + 1} className={`bg-[#0b1224]/40 rounded-xl p-5 border-t-4 ${edu.current ? 'border-t-[#e8833a]' : 'border-t-white/10'} shadow-lg`}>
-                    <h3 className="font-bold text-white text-sm mb-1">{edu.degree}</h3>
-                    <p className="text-white/35 text-xs">{edu.school}</p>
-                    <p className="text-[#e8833a] font-bold text-xs mt-2">{edu.year}</p>
+                  <motion.div key={i} variants={fadeUp} custom={i + 1} className={`bg-[#111d33]/50 rounded-xl p-5 border-t-4 shadow-lg ${edu.current ? 'border-t-[#e8833a]' : 'border-t-[#4da6e8]/30'}`}>
+                    <h3 className="font-bold text-[#e8eaef] text-sm mb-1">{edu.degree}</h3>
+                    <p className="text-[#b8bcc5]/35 text-xs">{edu.school}</p>
+                    <p className={`font-bold text-xs mt-2 ${edu.current ? 'text-[#e8833a]' : 'text-[#4da6e8]'}`}>{edu.year}</p>
                   </motion.div>
                 ))}
               </div>
@@ -283,20 +301,20 @@ export default function Home() {
         </a>
 
         {/* Footer */}
-        <footer className="py-12 border-t border-white/5">
+        <footer className="py-12 border-t border-[#4da6e8]/8">
           <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3 text-white/30 text-sm">
-              <img src="/manus-storage/jm-logo_e1ab2810.png" alt="Jack Martin" className="h-8 w-auto opacity-50" />
-              <span>Jack Martin · <span className="text-[#e8833a]">Digital Strategist & AI Consultant</span></span>
+            <div className="flex items-center gap-3 text-[#b8bcc5]/30 text-sm">
+              <img src="/manus-storage/jm-logo_e1ab2810.png" alt="Jack Martin" className="h-10 w-auto opacity-60" />
+              <span>Jack Martin · <span className="text-[#e8833a]">Digital Strategist</span> & <span className="text-[#4da6e8]">AI Consultant</span></span>
             </div>
             <div className="flex items-center gap-4">
-              <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="text-white/30 hover:text-[#e8833a] transition-colors"><Github size={18} /></a>
-              <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="text-white/30 hover:text-[#e8833a] transition-colors"><Linkedin size={18} /></a>
-              <a href="mailto:jack@jackmartin.co.za" className="text-white/30 hover:text-[#e8833a] transition-colors"><Mail size={18} /></a>
-              <a href="https://bold.pro/my/johnhenryjack-martin" target="_blank" rel="noopener" className="text-white/30 hover:text-[#e8833a] transition-colors"><Globe size={18} /></a>
+              <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="text-[#b8bcc5]/30 hover:text-[#4da6e8] transition-colors"><Github size={18} /></a>
+              <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="text-[#b8bcc5]/30 hover:text-[#4da6e8] transition-colors"><Linkedin size={18} /></a>
+              <a href="mailto:jack@jackmartin.co.za" className="text-[#b8bcc5]/30 hover:text-[#e8833a] transition-colors"><Mail size={18} /></a>
+              <a href="https://bold.pro/my/johnhenryjack-martin" target="_blank" rel="noopener" className="text-[#b8bcc5]/30 hover:text-[#e8833a] transition-colors"><Globe size={18} /></a>
             </div>
-            <div className="text-white/20 text-xs font-[family-name:var(--font-mono)]">
-              Science × AI × Psychology × Ministry × Business
+            <div className="text-[#b8bcc5]/20 text-xs font-[family-name:var(--font-mono)]">
+              <span className="text-[#b8bcc5]/30">Science</span> × <span className="text-[#4da6e8]/40">AI</span> × <span className="text-[#b8bcc5]/30">Psychology</span> × <span className="text-[#e8833a]/40">Ministry</span> × <span className="text-[#b8bcc5]/30">Business</span>
             </div>
           </div>
         </footer>
