@@ -1,23 +1,10 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Globe, Download, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import { Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Globe, Download, MessageCircle, Calendar, Brain, Heart, Scale } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import SocialProof from "@/components/SocialProof";
 import CookieConsent from "@/components/CookieConsent";
 import ChatWidget from "@/components/ChatWidget";
-
-/*
- * DESIGN SYSTEM — pixel-matched to JM logo:
- *
- * BG:           #0a0f1a (very dark navy, near-black)
- * Card BG:      #0e1422 (slightly lighter for depth)
- * Silver text:  #c8ccd4 (body), #d8dce4 (headings — "JACK")
- * Orange:       #e8833a (primary — "MARTIN", accents)
- * Deep blue:    #2d6ca6 (circuit nodes — muted, NOT sky blue)
- * Blue glow:    #3d8fd4 (subtle glow)
- * Muted grey:   #6b7080 (tagline, secondary text)
- * Font:         Montserrat — uppercase, letter-spaced for headings
- *               Inter — body text
- */
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -28,35 +15,32 @@ const fadeUp = {
 };
 
 const projects = [
-  { name: "Godspeed Digital Agency", description: "Full-service digital agency website — SEO, AI content strategy, and marketing automation services.", tech: ["TypeScript", "React", "Tailwind"], category: "Website Built", url: "https://github.com/jackmartin777/godspeed-digital-agency" },
-  { name: "MyFiladelfia 2026", description: "Training institution website — QCTO-accredited courses, student portal, and online applications.", tech: ["TypeScript", "React", "CMS"], category: "Website Built", url: "https://github.com/jackmartin777/2026-newmyfiladelfia-page" },
-  { name: "Golden Journeys", description: "Travel and tourism website showcasing curated South African experiences.", tech: ["React", "Design", "CMS"], category: "Website Built", url: "https://github.com/jackmartin777/Golden-Journeys" },
-  { name: "Kunsmatige Intelligensie", description: "AI education platform — making AI accessible in Afrikaans.", tech: ["TypeScript", "StackBlitz", "Education"], category: "Website Built", url: "https://github.com/jackmartin777/kunsmatigeintelligensie" },
-  { name: "Agentic Marketing Optimisation", description: "ML + automation pipeline for real-time campaign decisions and predictive prioritisation.", tech: ["Python", "Flask", "ML", "APIs"], category: "AI & Automation", url: "https://github.com/jackmartin777/software-income-playbooks" },
-  { name: "Project N.O.M.A.D", description: "Self-contained, offline survival computer packed with critical tools, knowledge, and AI.", tech: ["TypeScript", "AI", "Offline-First"], category: "AI & Automation", url: "https://github.com/jackmartin777/project-nomad" },
-  { name: "Everything Claude Code", description: "Agent harness performance optimization — skills, instincts, memory, and research-first development.", tech: ["JavaScript", "AI Agents", "Claude"], category: "AI & Automation", url: "https://github.com/jackmartin777/everything-claude-code" },
-  { name: "Oh My ClaudeCode", description: "Teams-first multi-agent orchestration for Claude Code — coordinating AI agents at scale.", tech: ["TypeScript", "Multi-Agent", "Orchestration"], category: "AI & Automation", url: "https://github.com/jackmartin777/oh-my-claudecode" },
-  { name: "Agency Agents", description: "A complete AI agency — specialized expert agents with personality, processes, and proven deliverables.", tech: ["AI Agents", "Automation", "Agency"], category: "AI & Automation", url: "https://github.com/jackmartin777/agency-agents" },
-  { name: "Claude Memory System", description: "Plugin that captures coding sessions, compresses with AI, and injects context into future sessions.", tech: ["TypeScript", "Claude", "Memory"], category: "GitHub Fork", url: "https://github.com/jackmartin777/claude-mem" },
-  { name: "Dexter Finance", description: "Autonomous agent for deep financial research — AI-driven market analysis and insights.", tech: ["TypeScript", "AI", "Finance"], category: "GitHub Fork", url: "https://github.com/jackmartin777/dexterfinance" },
-  { name: "MyFiladelfia AI Call Centre", description: "AI Agent-powered call centre — automated student support and enquiry handling.", tech: ["AI Agents", "Voice", "Automation"], category: "AI & Automation", url: "https://github.com/jackmartin777/Myfiladeflia-call-centre-2026" },
-  { name: "Awesome LLM Apps", description: "Collection of LLM applications with AI Agents and RAG using OpenAI, Anthropic, Gemini.", tech: ["Python", "RAG", "LLMs", "Agents"], category: "GitHub Fork", url: "https://github.com/jackmartin777/awesome-llm-apps" },
-  { name: "Journiv App", description: "Bible study journaling app — integrating Scripture engagement with personal reflection.", tech: ["JavaScript", "Mobile", "Ministry"], category: "Education & Ministry", url: "https://github.com/jackmartin777/journiv-app" },
-  { name: "Software Income Playbooks", description: "Curated monetization playbooks and API ideas for founders, agencies, and automation builders.", tech: ["JavaScript", "Business", "APIs"], category: "Business & Strategy", url: "https://github.com/jackmartin777/software-income-playbooks" },
+  { name: "Donna AI", description: "AI-powered WhatsApp assistant with 20+ service integrations — handles scheduling, content delivery, and automated client communication via n8n workflows.", tech: ["n8n", "WhatsApp", "AI Agents"], category: "AI & Automation", url: "#" },
+  { name: "Agentic Marketing Optimisation", description: "Predictive lead scoring and real-time campaign decisions — reduces cost-per-acquisition by routing spend to highest-converting audiences automatically.", tech: ["Python", "Flask", "ML", "APIs"], category: "AI & Automation", url: "https://github.com/jackmartin777/software-income-playbooks" },
+  { name: "MyFiladelfia AI Call Centre", description: "Autonomous AI agent handling 200+ student enquiries per week — qualification checks, course recommendations, and application routing without human intervention.", tech: ["AI Agents", "Voice", "Automation"], category: "AI & Automation", url: "https://github.com/jackmartin777/Myfiladeflia-call-centre-2026" },
+  { name: "Everything Claude Code", description: "Performance optimization framework for AI coding agents — skills, instincts, memory systems, and security protocols for production-grade AI development.", tech: ["JavaScript", "AI Agents", "Claude"], category: "AI & Automation", url: "https://github.com/jackmartin777/everything-claude-code" },
+  { name: "Oh My ClaudeCode", description: "Multi-agent orchestration system coordinating teams of AI agents — task delegation, memory sharing, and collaborative problem-solving at scale.", tech: ["TypeScript", "Multi-Agent", "Orchestration"], category: "AI & Automation", url: "https://github.com/jackmartin777/oh-my-claudecode" },
+  { name: "OpenClaw / Neuroshell", description: "Autonomous AI agent platform with a neurodivergent productivity vertical — 8-skill suite designed for ADHD/ASD users. Bilingual EN/AF architecture.", tech: ["AI Agents", "ADHD", "Productivity"], category: "AI & Automation", url: "#" },
+  { name: "Agency Agents", description: "Complete AI agency framework — specialized expert agents with defined personalities, processes, and deliverables for client work automation.", tech: ["AI Agents", "Automation", "Agency"], category: "AI & Automation", url: "https://github.com/jackmartin777/agency-agents" },
+  { name: "Godspeed Digital Agency", description: "Full-service digital agency website — SEO, AI content strategy, and marketing automation services for SMEs.", tech: ["TypeScript", "React", "Tailwind"], category: "Websites", url: "https://github.com/jackmartin777/godspeed-digital-agency" },
+  { name: "MyFiladelfia 2026", description: "Training institution platform — QCTO-accredited course catalogue, student portal, and online applications.", tech: ["TypeScript", "React", "CMS"], category: "Websites", url: "https://github.com/jackmartin777/2026-newmyfiladelfia-page" },
+  { name: "Golden Journeys", description: "Travel and tourism website showcasing curated South African experiences with booking integration.", tech: ["React", "Design", "CMS"], category: "Websites", url: "https://github.com/jackmartin777/Golden-Journeys" },
+  { name: "Journiv App", description: "Bible study journaling app — integrating Scripture engagement with personal reflection and community sharing.", tech: ["JavaScript", "Mobile", "Ministry"], category: "Ministry & Education", url: "https://github.com/jackmartin777/journiv-app" },
+  { name: "Software Income Playbooks", description: "Curated monetization frameworks and API-first business models for founders, agencies, and automation builders.", tech: ["JavaScript", "Business", "APIs"], category: "Strategy", url: "https://github.com/jackmartin777/software-income-playbooks" },
 ];
 
+const categories = ["All", "AI & Automation", "Websites", "Ministry & Education", "Strategy"];
+
 const categoryStyle: Record<string, string> = {
-  "Website Built": "text-[#3d8fd4] bg-[#2d6ca6]/10 border-[#2d6ca6]/20",
   "AI & Automation": "text-[#e8833a] bg-[#e8833a]/8 border-[#e8833a]/15",
-  "GitHub Fork": "text-[#6b7080] bg-[#6b7080]/8 border-[#6b7080]/15",
-  "Education & Ministry": "text-[#3d8fd4] bg-[#2d6ca6]/10 border-[#2d6ca6]/20",
-  "Business & Strategy": "text-[#e8833a] bg-[#e8833a]/8 border-[#e8833a]/15",
+  "Websites": "text-[#3d8fd4] bg-[#2d6ca6]/10 border-[#2d6ca6]/20",
+  "Ministry & Education": "text-[#3d8fd4] bg-[#2d6ca6]/10 border-[#2d6ca6]/20",
+  "Strategy": "text-[#e8833a] bg-[#e8833a]/8 border-[#e8833a]/15",
 };
 
-// Heading component matching the logo's "JACK MARTIN" style
-function LogoHeading({ silver, orange, className = "" }: { silver: string; orange: string; className?: string }) {
+function LogoHeading({ silver, orange }: { silver: string; orange: string }) {
   return (
-    <h2 className={`font-[family-name:var(--font-heading)] font-bold uppercase tracking-[0.2em] text-2xl md:text-3xl ${className}`}>
+    <h2 className="font-[family-name:var(--font-heading)] font-bold uppercase tracking-[0.2em] text-2xl md:text-3xl">
       <span className="text-[#d8dce4]">{silver} </span>
       <span className="text-[#e8833a]">{orange}</span>
     </h2>
@@ -65,10 +49,12 @@ function LogoHeading({ silver, orange, className = "" }: { silver: string; orang
 
 export default function Home() {
   const { } = useAuth();
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filteredProjects = activeFilter === "All" ? projects : projects.filter(p => p.category === activeFilter);
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-[#0a0f1a]">
-      {/* Background watermark */}
       <div className="fixed inset-0 z-0 opacity-[0.08] pointer-events-none" style={{ backgroundImage: `url('/manus-storage/brain-heart-bg_58cce87d.jpg')`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
 
       <div className="relative z-10">
@@ -78,45 +64,80 @@ export default function Home() {
             <a href="#" className="flex items-center">
               <img src="/manus-storage/jm-logo-v2_1d412303.png" alt="Jack Martin" className="h-20 w-auto" />
             </a>
-            <div className="hidden md:flex items-center gap-8 font-[family-name:var(--font-heading)] text-xs font-medium uppercase tracking-[0.15em] text-[#6b7080]">
+            <div className="hidden md:flex items-center gap-6 font-[family-name:var(--font-heading)] text-[11px] font-medium uppercase tracking-[0.12em] text-[#6b7080]">
               <a href="#about" className="hover:text-[#d8dce4] transition-colors">About</a>
               <a href="#ai" className="hover:text-[#e8833a] transition-colors">AI & Automation</a>
+              <a href="#counselling" className="hover:text-[#d8dce4] transition-colors">Counselling</a>
               <a href="#experience" className="hover:text-[#d8dce4] transition-colors">Experience</a>
               <a href="#portfolio" className="hover:text-[#e8833a] transition-colors">Portfolio</a>
-              <a href="#education" className="hover:text-[#d8dce4] transition-colors">Education</a>
+              <a href="#contact" className="hover:text-[#d8dce4] transition-colors">Contact</a>
             </div>
-            <a href="mailto:jack@jackmartin.co.za" className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] px-5 py-2.5 rounded bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors">
-              Get in Touch
+            <a href="https://calendly.com" target="_blank" rel="noopener" className="font-[family-name:var(--font-heading)] text-[11px] font-semibold uppercase tracking-[0.1em] px-5 py-2.5 rounded bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors flex items-center gap-2">
+              <Calendar size={13} /> Book a Discovery Call
             </a>
           </div>
         </nav>
 
-        {/* Hero Section — matches logo layout: JACK (silver) MARTIN (orange) */}
+        {/* Hero Section */}
         <section id="about" className="min-h-screen flex items-center pt-24" itemScope itemType="https://schema.org/Person">
           <meta itemProp="name" content="Jack Martin" />
-          <meta itemProp="jobTitle" content="AI Consultant & AI Automator" />
-          <meta itemProp="description" content="South African AI consultant specialising in AI automation, LLM workflows, agentic AI systems, and digital transformation." />
+          <meta itemProp="jobTitle" content="AI Consultant, Biblical Counsellor, Digital Strategist" />
           <div className="container">
-            <motion.div initial="hidden" animate="visible" className="max-w-4xl">
+            <motion.div initial="hidden" animate="visible" className="max-w-5xl">
               <motion.p variants={fadeUp} custom={0} className="font-[family-name:var(--font-heading)] text-xs font-medium uppercase tracking-[0.25em] text-[#6b7080] mb-6">
-                AI Consultant <span className="text-[#2d6ca6] mx-1">•</span> Digital Strategist <span className="text-[#2d6ca6] mx-1">•</span> Human Centred
+                AI & Automation <span className="text-[#2d6ca6] mx-1">|</span> Biblical Counselling & Ministry <span className="text-[#2d6ca6] mx-1">|</span> Legal + Governance Intelligence
               </motion.p>
-              <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-heading)] font-bold uppercase tracking-[0.15em] text-5xl md:text-7xl lg:text-8xl leading-[1] mb-8">
-                <span className="text-[#d8dce4]">JACK </span>
-                <span className="text-[#e8833a]">MARTIN</span>
+              <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-heading)] font-bold text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-6 text-[#d8dce4]">
+                Where AI Systems Meet Human Complexity — <span className="text-[#e8833a]">Built for Organisations That Can't Afford to Get It Wrong.</span>
               </motion.h1>
-              <motion.p variants={fadeUp} custom={2} className="text-lg text-[#8a8f9a] max-w-2xl leading-relaxed mb-8">
-                South Africa's AI consultant and AI automator with 10+ years experience. I design and deploy AI-driven systems for marketing automation, predictive analytics, and workflow optimisation — bridging psychology, technology, and digital transformation to create scalable solutions.
+
+              {/* UVP Block */}
+              <motion.p variants={fadeUp} custom={2} className="text-base md:text-lg text-[#8a8f9a] max-w-3xl leading-relaxed mb-8 border-l-2 border-[#e8833a]/30 pl-4">
+                Most consultants bring one lens. Jack brings five: AI engineering, pastoral care, legal reasoning, molecular science, and 15 years cross-sector delivery. That's not a niche — it's a system.
               </motion.p>
-              <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-3 mb-10">
-                <a href="/manus-storage/Jack_Martin_CV_Final_e1fbbd18.pdf" download="Jack_Martin_CV.pdf" className="inline-flex items-center gap-2 px-5 py-2.5 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors">
+
+              {/* Stats Strip */}
+              <motion.div variants={fadeUp} custom={3} className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-8">
+                {[
+                  { num: "98%", label: "Pass Rate" },
+                  { num: "85%", label: "Employment" },
+                  { num: "10+", label: "Years AI/Digital" },
+                  { num: "15+", label: "Years Cross-Sector" },
+                  { num: "30+", label: "Years MyFiladelfia" },
+                  { num: "3", label: "Active Ventures" },
+                ].map(stat => (
+                  <div key={stat.label} className="text-center p-3 rounded-lg bg-[#0e1422] border border-white/5">
+                    <div className="font-[family-name:var(--font-heading)] font-bold text-xl md:text-2xl text-[#e8833a]">{stat.num}</div>
+                    <div className="text-[#6b7080] text-[10px] font-[family-name:var(--font-heading)] uppercase tracking-[0.1em]">{stat.label}</div>
+                  </div>
+                ))}
+              </motion.div>
+
+              {/* CTAs */}
+              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-3 mb-8">
+                <a href="https://calendly.com" target="_blank" rel="noopener" className="inline-flex items-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors">
+                  <Calendar size={14} /> Book a Discovery Call
+                </a>
+                <a href="/manus-storage/Jack_Martin_CV_Final_e1fbbd18.pdf" download="Jack_Martin_CV.pdf" className="inline-flex items-center gap-2 px-5 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-transparent text-[#c8ccd4] border border-[#c8ccd4]/20 hover:border-[#c8ccd4]/40 transition-colors">
                   <Download size={14} /> Download CV
                 </a>
-                <a href="/manus-storage/Jack_Martin_CV_Monochrome_70d3e2e7.pdf" download="Jack_Martin_CV_Monochrome.pdf" className="inline-flex items-center gap-2 px-5 py-2.5 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-transparent text-[#c8ccd4] border border-[#c8ccd4]/20 hover:border-[#c8ccd4]/40 transition-colors">
-                  <Download size={14} /> Monochrome CV
+              </motion.div>
+
+              {/* 3-Button Audience Routing */}
+              <motion.div variants={fadeUp} custom={5} className="flex flex-wrap gap-3 mb-10">
+                <a href="#ai" className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0e1422] border border-[#e8833a]/15 text-[#c8ccd4] text-sm hover:border-[#e8833a]/40 transition-colors">
+                  <Brain size={16} className="text-[#e8833a]" /> I need AI systems built
+                </a>
+                <a href="#counselling" className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0e1422] border border-[#2d6ca6]/15 text-[#c8ccd4] text-sm hover:border-[#2d6ca6]/40 transition-colors">
+                  <Heart size={16} className="text-[#3d8fd4]" /> I need ministry or counselling support
+                </a>
+                <a href="#education" className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0e1422] border border-[#2d6ca6]/15 text-[#c8ccd4] text-sm hover:border-[#2d6ca6]/40 transition-colors">
+                  <Scale size={16} className="text-[#3d8fd4]" /> I want biblical counsellor training
                 </a>
               </motion.div>
-              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-5 text-sm text-[#6b7080]">
+
+              {/* Contact Info */}
+              <motion.div variants={fadeUp} custom={6} className="flex flex-wrap gap-5 text-sm text-[#6b7080]">
                 <span className="flex items-center gap-2"><MapPin size={14} className="text-[#2d6ca6]" /> Paarl, Western Cape</span>
                 <span className="flex items-center gap-2"><Phone size={14} className="text-[#2d6ca6]" /> +27 767 337 890</span>
                 <span className="flex items-center gap-2"><Mail size={14} className="text-[#e8833a]" /> jack@jackmartin.co.za</span>
@@ -131,23 +152,18 @@ export default function Home() {
         <section id="ai" className="py-24">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
-              <motion.div variants={fadeUp} custom={0} className="mb-12">
-                <span className="inline-block px-4 py-1.5 rounded font-[family-name:var(--font-heading)] text-xs font-bold uppercase tracking-[0.15em] bg-[#e8833a] text-white mb-5">
-                  AI & Automation
-                </span>
-                <p className="text-[#8a8f9a] text-lg max-w-2xl">
-                  Design and deployment of AI-driven systems for marketing, decision-making, and workflow automation. Focused on practical implementation and measurable outcomes.
+              <motion.div variants={fadeUp} custom={0} className="mb-8">
+                <LogoHeading silver="AI &" orange="AUTOMATION" />
+                <p className="text-[#8a8f9a] text-base mt-4 max-w-3xl">
+                  Jack designs AI systems that work in the real world — not proofs of concept. From agentic pipelines to predictive lead scoring, the focus is always measurable outcome, not impressive tech.
                 </p>
               </motion.div>
-
               <div className="grid md:grid-cols-2 gap-6 mb-10">
                 <motion.div variants={fadeUp} custom={1} className="bg-[#0e1422] border border-[#2d6ca6]/10 rounded-lg p-6">
                   <h3 className="font-[family-name:var(--font-heading)] font-semibold text-xs uppercase tracking-[0.2em] text-[#3d8fd4] mb-4">Capabilities</h3>
                   <ul className="space-y-2.5 text-[#c8ccd4]/80 text-[15px]">
                     {["End-to-end AI workflows (data → prediction → action)", "Applied ML (lead scoring, conversion prediction)", "API-based AI services (Flask, model integration)", "Automation (Make, Zapier, n8n, Pipedream)", "Prompt engineering & LLM workflows", "Agentic AI (multi-agent, memory systems)"].map(item => (
-                      <li key={item} className="flex items-start gap-2.5">
-                        <span className="text-[#2d6ca6] mt-0.5 text-xs">▸</span> {item}
-                      </li>
+                      <li key={item} className="flex items-start gap-2.5"><span className="text-[#2d6ca6] mt-0.5 text-xs">▸</span> {item}</li>
                     ))}
                   </ul>
                 </motion.div>
@@ -155,21 +171,16 @@ export default function Home() {
                   <h3 className="font-[family-name:var(--font-heading)] font-semibold text-xs uppercase tracking-[0.2em] text-[#e8833a] mb-4">Marketing & Data</h3>
                   <ul className="space-y-2.5 text-[#c8ccd4]/80 text-[15px]">
                     {["AI-driven paid acquisition (Meta, TikTok, YouTube)", "Funnel optimisation & behavioural tracking", "Conversion-focused systems & testing", "Data scoring (conversion readiness, quality)", "SEO automation & content pipelines", "Performance analytics & attribution"].map(item => (
-                      <li key={item} className="flex items-start gap-2.5">
-                        <span className="text-[#e8833a] mt-0.5 text-xs">▸</span> {item}
-                      </li>
+                      <li key={item} className="flex items-start gap-2.5"><span className="text-[#e8833a] mt-0.5 text-xs">▸</span> {item}</li>
                     ))}
                   </ul>
                 </motion.div>
               </div>
-
               <motion.div variants={fadeUp} custom={3}>
                 <h3 className="font-[family-name:var(--font-heading)] font-semibold text-xs uppercase tracking-[0.2em] text-[#c8ccd4]/60 mb-4">Tech Stack</h3>
                 <div className="flex flex-wrap gap-2">
                   {["Vibe Coding", "Flask", "Node.js", "Redis", "APIs", "Replit", "Make", "Zapier", "n8n", "Pipedream", "ChatGPT", "Claude", "Perplexity", "Mistral", "DeepSeek"].map(tag => (
-                    <span key={tag} className="font-[family-name:var(--font-mono)] text-[11px] text-[#3d8fd4]/70 bg-[#2d6ca6]/6 border border-[#2d6ca6]/12 px-3 py-1 rounded">
-                      {tag}
-                    </span>
+                    <span key={tag} className="font-[family-name:var(--font-mono)] text-[11px] text-[#3d8fd4]/70 bg-[#2d6ca6]/6 border border-[#2d6ca6]/12 px-3 py-1 rounded">{tag}</span>
                   ))}
                 </div>
               </motion.div>
@@ -177,23 +188,28 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Key Impact */}
-        <section className="py-16">
+        {/* Counselling & Ministry */}
+        <section id="counselling" className="py-24">
           <div className="container">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[
-                { num: "98%", label: "Student Pass Rate", color: "#e8833a" },
-                { num: "85%", label: "Graduate Employment", color: "#e8833a" },
-                { num: "10+", label: "Years Digital Strategy", color: "#d8dce4" },
-                { num: "15+", label: "Years Cross-Discipline", color: "#d8dce4" },
-              ].map((stat, i) => (
-                <motion.div key={stat.num} variants={fadeUp} custom={i} className="text-center p-6 rounded-lg bg-[#0e1422] border border-white/5">
-                  <div className="font-[family-name:var(--font-heading)] font-bold text-4xl md:text-5xl tracking-tight" style={{ color: stat.color }}>
-                    {stat.num}
-                  </div>
-                  <div className="text-[#6b7080] text-xs font-[family-name:var(--font-heading)] uppercase tracking-[0.15em] mt-2">{stat.label}</div>
-                </motion.div>
-              ))}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+              <motion.div variants={fadeUp} custom={0} className="mb-10">
+                <LogoHeading silver="COUNSELLING &" orange="MINISTRY" />
+              </motion.div>
+              <div className="grid md:grid-cols-3 gap-5">
+                {[
+                  { title: "Individual & Couples Biblical Counselling", desc: "Faith-integrated counselling grounded in Scripture, addressing trauma, relational conflict, anxiety, and life transitions with pastoral sensitivity and psychological insight.", cta: "Enquire About Sessions" },
+                  { title: "MyFiladelfia Short Courses & CBC Programme", desc: "QCTO-accredited training in biblical counselling — from introductory short courses to the full Certificate in Biblical Counselling. 98% pass rate, 85% post-grad employment.", cta: "View Programmes" },
+                  { title: "Pastoral & Organisational Care Consulting", desc: "Supporting churches, ministries, and organisations with pastoral care systems, leadership wellness frameworks, and AI-assisted care coordination.", cta: "Book a Consultation" },
+                ].map((service, i) => (
+                  <motion.div key={i} variants={fadeUp} custom={i + 1} className="bg-[#0e1422] border border-[#2d6ca6]/10 rounded-lg p-6 flex flex-col">
+                    <h3 className="font-[family-name:var(--font-heading)] font-semibold text-[#d8dce4] text-sm uppercase tracking-[0.05em] mb-3">{service.title}</h3>
+                    <p className="text-[#8a8f9a] text-sm leading-relaxed flex-1 mb-4">{service.desc}</p>
+                    <a href="https://wa.me/27767337890" target="_blank" rel="noopener" className="font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.1em] text-[#e8833a] hover:text-[#f5a623] transition-colors">
+                      {service.cta} →
+                    </a>
+                  </motion.div>
+                ))}
+              </div>
             </motion.div>
           </div>
         </section>
@@ -202,15 +218,15 @@ export default function Home() {
         <section id="experience" className="py-24">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
-              <motion.div variants={fadeUp} custom={0} className="mb-12">
+              <motion.div variants={fadeUp} custom={0} className="mb-10">
                 <LogoHeading silver="EXPERI" orange="ENCE" />
               </motion.div>
               <div className="space-y-4">
                 {[
-                  { role: "Founder & Digital Strategist", company: "Godspeed Digital Agency", date: "2019 — Present", bullets: ["AI-driven agency — SEO, automation, paid acquisition", "Increased client revenue via AI-powered transformation", "Funnels, e-learning, AI automation at scale"], primary: true },
-                  { role: "Director — Skills Development", company: "MyFiladelfia", date: "2010 — Present", bullets: ["QCTO-accredited — counseling & professional dev", "98% pass rate · 85% post-grad employment", "AI-driven mental health support tools"], primary: true },
-                  { role: "Director — Healthcare Ops", company: "De Oude Renbaan Sub-Acute Clinic", date: "2012 — 2024", bullets: ["Operational excellence & regulatory compliance", "Digital solutions for admin & patient care"], primary: false },
-                  { role: "Franchise Owner · Research Assistant", company: "Curves Wellington · Synexa Life Sciences · The Doctors Lab, London", date: "2002 — 2010", bullets: ["Biomarker research · Digital marketing for holistic wellness"], primary: false },
+                  { role: "Founder & Digital Strategist", company: "Godspeed Digital Agency", date: "2019 — Present", bullets: ["Founded Godspeed Digital in 2019 to bring enterprise-grade AI systems to small and mid-size businesses", "Builds end-to-end pipelines from data ingestion to automated action — clients see measurable ROI within 60 days", "AI-driven paid acquisition, funnel automation, and content systems serving clients across South Africa"], primary: true },
+                  { role: "Director & Founder", company: "MyFiladelfia — Skills Development & Training", date: "1990s — Present", bullets: ["Founded MyFiladelfia — now a QCTO-accredited training institution offering biblical counselling and professional development programmes", "98% pass rate across all cohorts. 85% post-graduation employment rate", "Pioneered hybrid learning models integrating AI-driven mental health support tools"], primary: true },
+                  { role: "Director — Healthcare Operations", company: "De Oude Renbaan Sub-Acute Clinic", date: "2012 — 2024", bullets: ["Directed operations for a sub-acute healthcare clinic, managing regulatory compliance, digital systems integration, and patient care administration", "Bridged clinical governance and technology implementation — streamlined admin through digital solutions"], primary: false },
+                  { role: "Franchise Owner · Research Assistant", company: "Curves Wellington · Synexa Life Sciences · The Doctors Lab, London", date: "2002 — 2010", bullets: ["Biomarker research and clinical analysis at Synexa Life Sciences and The Doctors Laboratory, London", "Established and grew a women's wellness franchise through digital marketing strategies"], primary: false },
                 ].map((exp, i) => (
                   <motion.div key={i} variants={fadeUp} custom={i + 1} className={`bg-[#0e1422] rounded-lg p-6 border-l-[3px] ${exp.primary ? 'border-l-[#e8833a]' : 'border-l-[#2d6ca6]/40'} border border-white/[0.03]`}>
                     <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-2">
@@ -232,40 +248,34 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Portfolio */}
+        {/* Portfolio with Filter Tabs */}
         <section id="portfolio" className="py-24">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
-              <motion.div variants={fadeUp} custom={0} className="mb-12">
+              <motion.div variants={fadeUp} custom={0} className="mb-8">
                 <LogoHeading silver="PORTFOLIO &" orange="GITHUB FORKS" />
-                <p className="text-[#6b7080] text-base mt-3 max-w-lg">
-                  Websites built, AI systems, automation tools, and curated GitHub forks.
-                </p>
+                <p className="text-[#6b7080] text-base mt-3 max-w-lg">Websites built, AI systems, automation tools, and curated projects.</p>
+              </motion.div>
+              {/* Filter Tabs */}
+              <motion.div variants={fadeUp} custom={1} className="flex flex-wrap gap-2 mb-8">
+                {categories.map(cat => (
+                  <button key={cat} onClick={() => setActiveFilter(cat)} className={`font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.12em] px-4 py-2 rounded transition-colors ${activeFilter === cat ? 'bg-[#e8833a] text-white' : 'bg-[#0e1422] text-[#6b7080] border border-white/5 hover:text-[#d8dce4]'}`}>
+                    {cat}
+                  </button>
+                ))}
               </motion.div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {projects.map((project, i) => (
-                  <motion.a
-                    key={project.name}
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener"
-                    variants={fadeUp}
-                    custom={i + 1}
-                    className="group bg-[#0e1422] border border-white/[0.03] rounded-lg p-5 hover:border-[#2d6ca6]/20 transition-all duration-300 hover:-translate-y-0.5"
-                  >
+                {filteredProjects.map((project, i) => (
+                  <motion.a key={project.name} href={project.url} target="_blank" rel="noopener" variants={fadeUp} custom={i + 2} className="group bg-[#0e1422] border border-white/[0.03] rounded-lg p-5 hover:border-[#2d6ca6]/20 transition-all duration-300 hover:-translate-y-0.5">
                     <div className="flex items-start justify-between mb-3">
-                      <span className={`text-[10px] font-[family-name:var(--font-heading)] uppercase tracking-[0.15em] px-2 py-0.5 rounded border ${categoryStyle[project.category] || "text-[#6b7080] bg-white/5 border-white/10"}`}>
-                        {project.category}
-                      </span>
+                      <span className={`text-[10px] font-[family-name:var(--font-heading)] uppercase tracking-[0.15em] px-2 py-0.5 rounded border ${categoryStyle[project.category] || "text-[#6b7080] bg-white/5 border-white/10"}`}>{project.category}</span>
                       <ExternalLink size={13} className="text-[#6b7080]/30 group-hover:text-[#e8833a] transition-colors" />
                     </div>
                     <h3 className="font-[family-name:var(--font-heading)] font-semibold text-[#d8dce4] text-sm uppercase tracking-[0.03em] mb-2 group-hover:text-[#e8833a] transition-colors">{project.name}</h3>
                     <p className="text-[#6b7080] text-sm leading-relaxed mb-4">{project.description}</p>
                     <div className="flex flex-wrap gap-1.5">
                       {project.tech.map(t => (
-                        <span key={t} className="text-[10px] font-[family-name:var(--font-mono)] text-[#3d8fd4]/40 border border-[#2d6ca6]/10 px-2 py-0.5 rounded">
-                          {t}
-                        </span>
+                        <span key={t} className="text-[10px] font-[family-name:var(--font-mono)] text-[#3d8fd4]/40 border border-[#2d6ca6]/10 px-2 py-0.5 rounded">{t}</span>
                       ))}
                     </div>
                   </motion.a>
@@ -279,20 +289,22 @@ export default function Home() {
         <section id="education" className="py-24">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
-              <motion.div variants={fadeUp} custom={0} className="mb-12">
+              <motion.div variants={fadeUp} custom={0} className="mb-10">
                 <LogoHeading silver="EDUCA" orange="TION" />
               </motion.div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
                 {[
-                  { degree: "Master of Divinity", school: "SA Theological Seminary", year: "2025 — In Progress", current: true },
-                  { degree: "B.Sc. (Hons) Molecular Microbiology", school: "Stellenbosch University", year: "2002", current: false },
-                  { degree: "Bachelor of Science", school: "Stellenbosch University", year: "1999 — 2001", current: false },
-                  { degree: "Cert. Digital Marketing", school: "Elite Inc.", year: "2019", current: false },
+                  { degree: "Master of Divinity", school: "SA Theological Seminary", year: "2025 — In Progress", current: true, desc: "Research Focus: Pastoral Emotional Strain & AI-Assisted Care Systems in Ministry Contexts." },
+                  { degree: "LLB (Hons)", school: "University of South Africa", year: "Completed", current: false, desc: "Applied across AI governance, contract frameworks, compliance advisory, and ethical AI deployment." },
+                  { degree: "B.Sc. (Hons) Molecular Microbiology", school: "Stellenbosch University", year: "2002", current: false, desc: "Foundation in biomarker research and systems biology — informs data-driven approaches to health tech." },
+                  { degree: "Bachelor of Science", school: "Stellenbosch University", year: "1999 — 2001", current: false, desc: "" },
+                  { degree: "Cert. Digital Marketing", school: "Elite Inc.", year: "2019", current: false, desc: "" },
                 ].map((edu, i) => (
                   <motion.div key={i} variants={fadeUp} custom={i + 1} className={`bg-[#0e1422] rounded-lg p-5 border-t-[3px] ${edu.current ? 'border-t-[#e8833a]' : 'border-t-[#2d6ca6]/30'} border border-white/[0.03]`}>
                     <h3 className="font-[family-name:var(--font-heading)] font-semibold text-[#d8dce4] text-xs uppercase tracking-[0.05em] mb-1">{edu.degree}</h3>
                     <p className="text-[#6b7080] text-xs">{edu.school}</p>
-                    <p className={`font-[family-name:var(--font-mono)] text-xs font-medium mt-2 ${edu.current ? 'text-[#e8833a]' : 'text-[#3d8fd4]/60'}`}>{edu.year}</p>
+                    <p className={`font-[family-name:var(--font-mono)] text-xs font-medium mt-1 ${edu.current ? 'text-[#e8833a]' : 'text-[#3d8fd4]/60'}`}>{edu.year}</p>
+                    {edu.desc && <p className="text-[#8a8f9a] text-[11px] mt-2 leading-relaxed">{edu.desc}</p>}
                   </motion.div>
                 ))}
               </div>
@@ -300,37 +312,64 @@ export default function Home() {
           </div>
         </section>
 
-        {/* AI Chat Widget */}
+        {/* Chat Widget */}
         <ChatWidget />
 
-        {/* Social Proof Popups */}
+        {/* Social Proof */}
         <SocialProof />
 
-        {/* Cookie Consent Banner */}
+        {/* Cookie Consent */}
         <CookieConsent />
 
-        {/* Floating WhatsApp Button */}
+        {/* WhatsApp */}
         <a href="https://wa.me/27767337890" target="_blank" rel="noopener" className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/25 hover:scale-110 transition-transform" aria-label="Chat on WhatsApp">
           <MessageCircle size={26} className="text-white" />
         </a>
 
-        {/* Footer */}
-        <footer className="py-12 border-t border-[#2d6ca6]/8">
-          <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <img src="/manus-storage/jm-logo-v2_1d412303.png" alt="Jack Martin" className="h-14 w-auto opacity-60" />
-              <span className="font-[family-name:var(--font-heading)] text-xs uppercase tracking-[0.1em] text-[#6b7080]">
-                <span className="text-[#c8ccd4]">Jack</span> <span className="text-[#e8833a]">Martin</span>
-              </span>
+        {/* Footer — Rebuilt */}
+        <footer id="contact" className="py-16 border-t border-[#2d6ca6]/8">
+          <div className="container">
+            <div className="grid md:grid-cols-3 gap-10">
+              {/* Brand */}
+              <div>
+                <img src="/manus-storage/jm-logo-v2_1d412303.png" alt="Jack Martin" className="h-14 w-auto mb-4" />
+                <p className="text-[#8a8f9a] text-sm leading-relaxed">
+                  Where AI systems meet human complexity. Built for organisations that can't afford to get it wrong.
+                </p>
+              </div>
+              {/* Quick Links */}
+              <div>
+                <h4 className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.15em] text-[#d8dce4] mb-4">Quick Links</h4>
+                <div className="space-y-2 text-sm text-[#6b7080]">
+                  <a href="#ai" className="block hover:text-[#e8833a] transition-colors">AI & Automation</a>
+                  <a href="#counselling" className="block hover:text-[#e8833a] transition-colors">Counselling & Ministry</a>
+                  <a href="#experience" className="block hover:text-[#e8833a] transition-colors">Experience</a>
+                  <a href="#portfolio" className="block hover:text-[#e8833a] transition-colors">Portfolio</a>
+                  <a href="#education" className="block hover:text-[#e8833a] transition-colors">Education</a>
+                </div>
+              </div>
+              {/* Contact */}
+              <div>
+                <h4 className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.15em] text-[#d8dce4] mb-4">Contact</h4>
+                <div className="space-y-2 text-sm text-[#6b7080]">
+                  <p className="flex items-center gap-2"><Mail size={14} className="text-[#e8833a]" /> jack@jackmartin.co.za</p>
+                  <p className="flex items-center gap-2"><Phone size={14} className="text-[#2d6ca6]" /> +27 767 337 890</p>
+                  <p className="flex items-center gap-2"><MapPin size={14} className="text-[#2d6ca6]" /> Paarl, Western Cape, South Africa</p>
+                  <div className="flex items-center gap-3 mt-3">
+                    <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="text-[#6b7080] hover:text-[#2d6ca6] transition-colors"><Linkedin size={18} /></a>
+                    <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="text-[#6b7080] hover:text-[#d8dce4] transition-colors"><Github size={18} /></a>
+                    <a href="https://bold.pro/my/johnhenryjack-martin" target="_blank" rel="noopener" className="text-[#6b7080] hover:text-[#e8833a] transition-colors"><Globe size={18} /></a>
+                  </div>
+                </div>
+                <a href="https://calendly.com" target="_blank" rel="noopener" className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.1em] bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors">
+                  <Calendar size={12} /> Book a Call
+                </a>
+              </div>
             </div>
-            <div className="flex items-center gap-4">
-              <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="text-[#6b7080]/50 hover:text-[#d8dce4] transition-colors"><Github size={18} /></a>
-              <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="text-[#6b7080]/50 hover:text-[#2d6ca6] transition-colors"><Linkedin size={18} /></a>
-              <a href="mailto:jack@jackmartin.co.za" className="text-[#6b7080]/50 hover:text-[#e8833a] transition-colors"><Mail size={18} /></a>
-              <a href="https://bold.pro/my/johnhenryjack-martin" target="_blank" rel="noopener" className="text-[#6b7080]/50 hover:text-[#e8833a] transition-colors"><Globe size={18} /></a>
-            </div>
-            <div className="font-[family-name:var(--font-heading)] text-[10px] uppercase tracking-[0.2em] text-[#6b7080]/30">
-              AI Consultant • Digital Strategist • Human Centred
+            <div className="mt-10 pt-6 border-t border-[#2d6ca6]/8 text-center">
+              <p className="font-[family-name:var(--font-heading)] text-[10px] uppercase tracking-[0.2em] text-[#6b7080]/40">
+                AI Consultant • Biblical Counsellor • Digital Strategist • Paarl, South Africa
+              </p>
             </div>
           </div>
         </footer>
