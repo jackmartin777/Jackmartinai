@@ -70,7 +70,7 @@ export default function Home() {
         <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[#0a0f1a]/90 border-b border-[#2d6ca6]/10">
           <div className="container flex items-center justify-between py-3">
             <a href="#" className="flex items-center">
-              <img src="/manus-storage/jm-logo-v2_1d412303.png" alt="Jack Martin" className="h-14 w-auto" />
+              <img src="/manus-storage/jm-logo-v2_1d412303.png" alt="Jack Martin" className="h-20 w-auto" />
             </a>
             <div className="hidden md:flex items-center gap-8 font-[family-name:var(--font-heading)] text-xs font-medium uppercase tracking-[0.15em] text-[#6b7080]">
               <a href="#about" className="hover:text-[#d8dce4] transition-colors">About</a>
@@ -300,7 +300,7 @@ export default function Home() {
         <footer className="py-12 border-t border-[#2d6ca6]/8">
           <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <img src="/manus-storage/jm-logo-v2_1d412303.png" alt="Jack Martin" className="h-10 w-auto opacity-60" />
+              <img src="/manus-storage/jm-logo-v2_1d412303.png" alt="Jack Martin" className="h-14 w-auto opacity-60" />
               <span className="font-[family-name:var(--font-heading)] text-xs uppercase tracking-[0.1em] text-[#6b7080]">
                 <span className="text-[#c8ccd4]">Jack</span> <span className="text-[#e8833a]">Martin</span>
               </span>
