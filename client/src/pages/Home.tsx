@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Globe } from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Globe, Download, MessageCircle } from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -10,16 +10,21 @@ const fadeUp = {
 };
 
 const projects = [
+  // Websites Built
+  { name: "Godspeed Digital Agency", description: "Full-service digital agency website — SEO, AI content strategy, and marketing automation services.", tech: ["TypeScript", "React", "Tailwind"], category: "Website Built", url: "https://github.com/jackmartin777/godspeed-digital-agency" },
+  { name: "MyFiladelfia 2026", description: "Training institution website — QCTO-accredited courses, student portal, and online applications.", tech: ["TypeScript", "React", "CMS"], category: "Website Built", url: "https://github.com/jackmartin777/2026-newmyfiladelfia-page" },
+  { name: "Golden Journeys", description: "Travel and tourism website showcasing curated South African experiences.", tech: ["React", "Design", "CMS"], category: "Website Built", url: "https://github.com/jackmartin777/Golden-Journeys" },
+  { name: "Kunsmatige Intelligensie", description: "AI education platform built with StackBlitz — making AI accessible in Afrikaans.", tech: ["TypeScript", "StackBlitz", "Education"], category: "Website Built", url: "https://github.com/jackmartin777/kunsmatigeintelligensie" },
+  // AI & Automation
   { name: "Agentic Marketing Optimisation", description: "ML + automation pipeline for real-time campaign decisions and predictive prioritisation.", tech: ["Python", "Flask", "ML", "APIs"], category: "AI & Automation", url: "https://github.com/jackmartin777/software-income-playbooks" },
-  { name: "Project N.O.M.A.D", description: "Self-contained, offline survival computer packed with critical tools, knowledge, and AI for off-grid empowerment.", tech: ["TypeScript", "AI", "Offline-First"], category: "AI & Automation", url: "https://github.com/jackmartin777/project-nomad" },
-  { name: "Everything Claude Code", description: "Agent harness performance optimization — skills, instincts, memory, security, and research-first development.", tech: ["JavaScript", "AI Agents", "Claude"], category: "AI & Automation", url: "https://github.com/jackmartin777/everything-claude-code" },
+  { name: "Project N.O.M.A.D", description: "Self-contained, offline survival computer packed with critical tools, knowledge, and AI.", tech: ["TypeScript", "AI", "Offline-First"], category: "AI & Automation", url: "https://github.com/jackmartin777/project-nomad" },
+  { name: "Everything Claude Code", description: "Agent harness performance optimization — skills, instincts, memory, and research-first development.", tech: ["JavaScript", "AI Agents", "Claude"], category: "AI & Automation", url: "https://github.com/jackmartin777/everything-claude-code" },
   { name: "Oh My ClaudeCode", description: "Teams-first multi-agent orchestration for Claude Code — coordinating AI agents at scale.", tech: ["TypeScript", "Multi-Agent", "Orchestration"], category: "AI & Automation", url: "https://github.com/jackmartin777/oh-my-claudecode" },
-  { name: "AI Engineering from Scratch", description: "Learn it. Build it. Ship it — comprehensive AI engineering curriculum and implementation.", tech: ["Python", "ML", "LLMs"], category: "AI & Automation", url: "https://github.com/jackmartin777/ai-engineering-from-scratch" },
-  { name: "Awesome LLM Apps", description: "Collection of LLM applications with AI Agents and RAG using OpenAI, Anthropic, Gemini and open-source models.", tech: ["Python", "RAG", "LLMs", "Agents"], category: "AI & Automation", url: "https://github.com/jackmartin777/awesome-llm-apps" },
   { name: "Agency Agents", description: "A complete AI agency — specialized expert agents with personality, processes, and proven deliverables.", tech: ["AI Agents", "Automation", "Agency"], category: "AI & Automation", url: "https://github.com/jackmartin777/agency-agents" },
-  { name: "Claude Memory System", description: "Plugin that captures coding sessions, compresses with AI, and injects relevant context into future sessions.", tech: ["TypeScript", "Claude", "Memory"], category: "AI & Automation", url: "https://github.com/jackmartin777/claude-mem" },
-  { name: "Dexter Finance", description: "Autonomous agent for deep financial research — AI-driven market analysis and insights.", tech: ["TypeScript", "AI", "Finance"], category: "AI & Automation", url: "https://github.com/jackmartin777/dexterfinance" },
-  { name: "MyFiladelfia AI Call Centre", description: "AI Agent-powered call centre for MyFiladelfia — automated student support.", tech: ["AI Agents", "Voice", "Automation"], category: "Education & Ministry", url: "https://github.com/jackmartin777/Myfiladeflia-call-centre-2026" },
+  { name: "Claude Memory System", description: "Plugin that captures coding sessions, compresses with AI, and injects context into future sessions.", tech: ["TypeScript", "Claude", "Memory"], category: "GitHub Fork", url: "https://github.com/jackmartin777/claude-mem" },
+  { name: "Dexter Finance", description: "Autonomous agent for deep financial research — AI-driven market analysis and insights.", tech: ["TypeScript", "AI", "Finance"], category: "GitHub Fork", url: "https://github.com/jackmartin777/dexterfinance" },
+  { name: "MyFiladelfia AI Call Centre", description: "AI Agent-powered call centre — automated student support and enquiry handling.", tech: ["AI Agents", "Voice", "Automation"], category: "AI & Automation", url: "https://github.com/jackmartin777/Myfiladeflia-call-centre-2026" },
+  { name: "Awesome LLM Apps", description: "Collection of LLM applications with AI Agents and RAG using OpenAI, Anthropic, Gemini.", tech: ["Python", "RAG", "LLMs", "Agents"], category: "GitHub Fork", url: "https://github.com/jackmartin777/awesome-llm-apps" },
   { name: "Journiv App", description: "Bible study journaling app — integrating Scripture engagement with personal reflection.", tech: ["JavaScript", "Mobile", "Ministry"], category: "Education & Ministry", url: "https://github.com/jackmartin777/journiv-app" },
   { name: "Software Income Playbooks", description: "Curated monetization playbooks and API ideas for founders, agencies, and automation builders.", tech: ["JavaScript", "Business", "APIs"], category: "Business & Strategy", url: "https://github.com/jackmartin777/software-income-playbooks" },
 ];
@@ -50,7 +55,7 @@ export default function Home() {
               <a href="#about" className="hover:text-[#e8833a] transition-colors">About</a>
               <a href="#ai" className="hover:text-[#e8833a] transition-colors">AI & Automation</a>
               <a href="#experience" className="hover:text-[#e8833a] transition-colors">Experience</a>
-              <a href="#portfolio" className="hover:text-[#e8833a] transition-colors">Portfolio</a>
+              <a href="#portfolio" className="hover:text-[#e8833a] transition-colors">Portfolio & Forks</a>
               <a href="#education" className="hover:text-[#e8833a] transition-colors">Education</a>
             </div>
             <a href="mailto:jack@jackmartin.co.za" className="text-sm px-4 py-2 rounded-lg bg-[#e8833a] text-white font-semibold hover:bg-[#f5a623] transition-colors shadow-lg shadow-[#e8833a]/20">
@@ -69,10 +74,18 @@ export default function Home() {
               <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-display)] font-extrabold text-5xl md:text-7xl lg:text-8xl text-white leading-[0.95] mb-6">
                 Jack <span className="text-[#e8833a]">Martin</span>
               </motion.h1>
-              <motion.p variants={fadeUp} custom={2} className="text-lg md:text-xl text-white/60 max-w-2xl leading-relaxed mb-10">
+              <motion.p variants={fadeUp} custom={2} className="text-lg md:text-xl text-white/60 max-w-2xl leading-relaxed mb-8">
                 10+ years leveraging technology to empower individuals, businesses, and communities. Bridging psychology, AI-driven innovation, and digital transformation to create scalable solutions.
               </motion.p>
-              <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-4 text-sm text-white/50">
+              <motion.div variants={fadeUp} custom={3} className="flex flex-wrap gap-3 mb-10">
+                <a href="/manus-storage/Jack_Martin_CV_Final_e1fbbd18.pdf" download="Jack_Martin_CV.pdf" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#e8833a] text-white font-semibold text-sm hover:bg-[#f5a623] transition-colors shadow-lg shadow-[#e8833a]/20">
+                  <Download size={16} /> Download CV
+                </a>
+                <a href="/manus-storage/Jack_Martin_CV_Monochrome_70d3e2e7.pdf" download="Jack_Martin_CV_Monochrome.pdf" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white/10 text-white font-semibold text-sm hover:bg-white/20 transition-colors border border-white/20">
+                  <Download size={16} /> Monochrome CV
+                </a>
+              </motion.div>
+              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-4 text-sm text-white/50">
                 <span className="flex items-center gap-2"><MapPin size={14} className="text-[#e8833a]" /> Paarl, Western Cape</span>
                 <span className="flex items-center gap-2"><Phone size={14} className="text-[#e8833a]" /> +27 767 337 890</span>
                 <span className="flex items-center gap-2"><Mail size={14} className="text-[#e8833a]" /> jack@jackmartin.co.za</span>
@@ -195,10 +208,10 @@ export default function Home() {
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
               <motion.h2 variants={fadeUp} custom={0} className="font-[family-name:var(--font-display)] font-extrabold text-3xl md:text-4xl text-[#e8833a] uppercase tracking-wide mb-4 drop-shadow-[0_2px_8px_rgba(232,131,58,0.3)]">
-                Portfolio
+                Portfolio & GitHub Forks
               </motion.h2>
               <motion.p variants={fadeUp} custom={1} className="text-white/40 text-lg mb-12 max-w-xl">
-                Selected projects from GitHub — AI agents, automation systems, and digital tools.
+                Websites built, AI systems, automation tools, and curated GitHub forks.
               </motion.p>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {projects.map((project, i) => (
@@ -257,6 +270,17 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+
+        {/* Floating WhatsApp Button */}
+        <a
+          href="https://wa.me/27767337890"
+          target="_blank"
+          rel="noopener"
+          className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/30 hover:scale-110 transition-transform"
+          aria-label="Chat on WhatsApp"
+        >
+          <MessageCircle size={26} className="text-white" />
+        </a>
 
         {/* Footer */}
         <footer className="py-12 border-t border-white/5">
