@@ -78,7 +78,7 @@ export default function Home() {
         </nav>
 
         {/* Hero Section */}
-        <section id="about" className="min-h-screen flex items-center pt-24" itemScope itemType="https://schema.org/Person">
+        <section id="about" className="min-h-screen flex items-center pt-32 md:pt-24" itemScope itemType="https://schema.org/Person">
           <meta itemProp="name" content="Jack Martin" />
           <meta itemProp="jobTitle" content="AI Consultant, AI Automator, Digital Strategist" />
           <div className="container">
@@ -86,13 +86,13 @@ export default function Home() {
               <motion.p variants={fadeUp} custom={0} className="font-[family-name:var(--font-heading)] text-xs font-medium uppercase tracking-[0.25em] text-[#6b7080] mb-6">
                 AI & Automation <span className="text-[#2d6ca6] mx-1">|</span> Digital Strategy <span className="text-[#2d6ca6] mx-1">|</span> Human-Centred Innovation
               </motion.p>
-              <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-heading)] font-bold text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-6 text-[#d8dce4]">
-                Where AI Systems Meet Human Complexity — <span className="text-[#e8833a]">Built for Organisations That Can't Afford to Get It Wrong.</span>
+              <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-heading)] font-bold text-2xl md:text-4xl lg:text-5xl leading-[1.15] mb-6 text-[#d8dce4]">
+                AI Systems That <span className="text-[#e8833a]">Actually Work.</span>
               </motion.h1>
 
               {/* UVP Block */}
-              <motion.p variants={fadeUp} custom={2} className="text-base md:text-lg text-[#8a8f9a] max-w-3xl leading-relaxed mb-8 border-l-2 border-[#e8833a]/30 pl-4">
-                Most consultants bring one lens. Jack brings five: AI engineering, pastoral care, legal reasoning, molecular science, and 15 years cross-sector delivery. That's not a niche — it's a system.
+              <motion.p variants={fadeUp} custom={2} className="text-sm md:text-base text-[#8a8f9a] max-w-2xl leading-relaxed mb-8 border-l-2 border-[#e8833a]/30 pl-4">
+                AI automation, digital strategy, and 15 years cross-sector delivery. Not a niche — a system.
               </motion.p>
 
               {/* Stats Strip */}
