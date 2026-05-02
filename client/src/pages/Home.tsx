@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Globe, Download, MessageCircle, Calendar, Brain, Heart, Scale } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import SocialProof from "@/components/SocialProof";
-import CookieConsent from "@/components/CookieConsent";
+
 import ChatWidget from "@/components/ChatWidget";
 
 const fadeUp = {
@@ -318,8 +318,7 @@ export default function Home() {
         {/* Social Proof */}
         <SocialProof />
 
-        {/* Cookie Consent */}
-        <CookieConsent />
+
 
         {/* WhatsApp */}
         <a href="https://wa.me/27767337890" target="_blank" rel="noopener" className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/25 hover:scale-110 transition-transform" aria-label="Chat on WhatsApp">
@@ -367,9 +366,12 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-10 pt-6 border-t border-[#2d6ca6]/8 text-center">
-              <p className="font-[family-name:var(--font-heading)] text-[10px] uppercase tracking-[0.2em] text-[#6b7080]/40">
-                AI Consultant • Biblical Counsellor • Digital Strategist • Paarl, South Africa
-              </p>
+            <p className="font-[family-name:var(--font-heading)] text-[10px] uppercase tracking-[0.2em] text-[#6b7080]/40">
+              AI Consultant • Biblical Counsellor • Digital Strategist • Paarl, South Africa
+            </p>
+            <p className="text-[#6b7080]/30 text-[10px] mt-2">
+              By visiting this site, you agree to our use of cookies and analytics for improving your experience. We collect minimal, anonymised data in compliance with POPIA and GDPR.
+            </p>
             </div>
           </div>
         </footer>
