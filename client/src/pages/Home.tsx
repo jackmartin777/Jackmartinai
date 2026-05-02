@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Globe, Download, MessageCircle } from "lucide-react";
+import { useAuth } from "@/_core/hooks/useAuth";
 import SocialProof from "@/components/SocialProof";
 import CookieConsent from "@/components/CookieConsent";
+import ChatWidget from "@/components/ChatWidget";
 
 /*
  * DESIGN SYSTEM — pixel-matched to JM logo:
@@ -62,6 +64,8 @@ function LogoHeading({ silver, orange, className = "" }: { silver: string; orang
 }
 
 export default function Home() {
+  const { } = useAuth();
+
   return (
     <div className="min-h-screen relative overflow-hidden bg-[#0a0f1a]">
       {/* Background watermark */}
@@ -295,6 +299,9 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+
+        {/* AI Chat Widget */}
+        <ChatWidget />
 
         {/* Social Proof Popups */}
         <SocialProof />
