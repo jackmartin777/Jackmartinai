@@ -61,16 +61,26 @@ export default function ChatWidget() {
       {/* Chat Toggle Button */}
       <AnimatePresence>
         {!isOpen && (
-          <motion.button
+          <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
-            onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 left-6 z-50 w-14 h-14 bg-gradient-to-br from-[#e8833a] to-[#d4762f] rounded-full flex items-center justify-center shadow-lg shadow-[#e8833a]/25 hover:scale-110 transition-transform"
-            aria-label="Open chat"
+            className="fixed bottom-6 left-6 z-50 flex items-center gap-2"
           >
-            <MessageSquare size={24} className="text-white" />
-          </motion.button>
+            <button
+              onClick={() => setIsOpen(true)}
+              className="w-14 h-14 bg-gradient-to-br from-[#e8833a] to-[#d4762f] rounded-full flex items-center justify-center shadow-lg shadow-[#e8833a]/25 hover:scale-110 transition-transform"
+              aria-label="Open chat"
+            >
+              <MessageSquare size={24} className="text-white" />
+            </button>
+            <button
+              onClick={() => setIsOpen(true)}
+              className="bg-[#0e1422] border border-[#e8833a]/20 text-[#e8833a] font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full shadow-lg shadow-black/20 hover:bg-[#e8833a] hover:text-white transition-colors"
+            >
+              Ask me
+            </button>
+          </motion.div>
         )}
       </AnimatePresence>
 
