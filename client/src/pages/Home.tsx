@@ -67,7 +67,6 @@ export default function Home() {
             <div className="hidden md:flex items-center gap-6 font-[family-name:var(--font-heading)] text-[11px] font-medium uppercase tracking-[0.12em] text-[#6b7080]">
               <a href="#about" className="hover:text-[#d8dce4] transition-colors">About</a>
               <a href="#ai" className="hover:text-[#e8833a] transition-colors">AI & Automation</a>
-              <a href="#counselling" className="hover:text-[#d8dce4] transition-colors">Counselling</a>
               <a href="#experience" className="hover:text-[#d8dce4] transition-colors">Experience</a>
               <a href="#portfolio" className="hover:text-[#e8833a] transition-colors">Portfolio</a>
               <a href="#contact" className="hover:text-[#d8dce4] transition-colors">Contact</a>
@@ -81,11 +80,11 @@ export default function Home() {
         {/* Hero Section */}
         <section id="about" className="min-h-screen flex items-center pt-24" itemScope itemType="https://schema.org/Person">
           <meta itemProp="name" content="Jack Martin" />
-          <meta itemProp="jobTitle" content="AI Consultant, Biblical Counsellor, Digital Strategist" />
+          <meta itemProp="jobTitle" content="AI Consultant, AI Automator, Digital Strategist" />
           <div className="container">
             <motion.div initial="hidden" animate="visible" className="max-w-5xl">
               <motion.p variants={fadeUp} custom={0} className="font-[family-name:var(--font-heading)] text-xs font-medium uppercase tracking-[0.25em] text-[#6b7080] mb-6">
-                AI & Automation <span className="text-[#2d6ca6] mx-1">|</span> Biblical Counselling & Ministry <span className="text-[#2d6ca6] mx-1">|</span> Legal + Governance Intelligence
+                AI & Automation <span className="text-[#2d6ca6] mx-1">|</span> Digital Strategy <span className="text-[#2d6ca6] mx-1">|</span> Human-Centred Innovation
               </motion.p>
               <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-heading)] font-bold text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-6 text-[#d8dce4]">
                 Where AI Systems Meet Human Complexity — <span className="text-[#e8833a]">Built for Organisations That Can't Afford to Get It Wrong.</span>
@@ -128,11 +127,8 @@ export default function Home() {
                 <a href="#ai" className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0e1422] border border-[#e8833a]/15 text-[#c8ccd4] text-sm hover:border-[#e8833a]/40 transition-colors">
                   <Brain size={16} className="text-[#e8833a]" /> I need AI systems built
                 </a>
-                <a href="#counselling" className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0e1422] border border-[#2d6ca6]/15 text-[#c8ccd4] text-sm hover:border-[#2d6ca6]/40 transition-colors">
-                  <Heart size={16} className="text-[#3d8fd4]" /> I need ministry or counselling support
-                </a>
-                <a href="#education" className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0e1422] border border-[#2d6ca6]/15 text-[#c8ccd4] text-sm hover:border-[#2d6ca6]/40 transition-colors">
-                  <Scale size={16} className="text-[#3d8fd4]" /> I want biblical counsellor training
+                <a href="#portfolio" className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0e1422] border border-[#2d6ca6]/15 text-[#c8ccd4] text-sm hover:border-[#2d6ca6]/40 transition-colors">
+                  <Scale size={16} className="text-[#3d8fd4]" /> I want digital strategy consulting
                 </a>
               </motion.div>
 
@@ -188,31 +184,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Counselling & Ministry */}
-        <section id="counselling" className="py-24">
-          <div className="container">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
-              <motion.div variants={fadeUp} custom={0} className="mb-10">
-                <LogoHeading silver="COUNSELLING &" orange="MINISTRY" />
-              </motion.div>
-              <div className="grid md:grid-cols-3 gap-5">
-                {[
-                  { title: "Individual & Couples Biblical Counselling", desc: "Faith-integrated counselling grounded in Scripture, addressing trauma, relational conflict, anxiety, and life transitions with pastoral sensitivity and psychological insight.", cta: "Enquire About Sessions" },
-                  { title: "MyFiladelfia Short Courses & CBC Programme", desc: "QCTO-accredited training in biblical counselling — from introductory short courses to the full Certificate in Biblical Counselling. 98% pass rate, 85% post-grad employment.", cta: "View Programmes" },
-                  { title: "Pastoral & Organisational Care Consulting", desc: "Supporting churches, ministries, and organisations with pastoral care systems, leadership wellness frameworks, and AI-assisted care coordination.", cta: "Book a Consultation" },
-                ].map((service, i) => (
-                  <motion.div key={i} variants={fadeUp} custom={i + 1} className="bg-[#0e1422] border border-[#2d6ca6]/10 rounded-lg p-6 flex flex-col">
-                    <h3 className="font-[family-name:var(--font-heading)] font-semibold text-[#d8dce4] text-sm uppercase tracking-[0.05em] mb-3">{service.title}</h3>
-                    <p className="text-[#8a8f9a] text-sm leading-relaxed flex-1 mb-4">{service.desc}</p>
-                    <a href="https://wa.me/27767337890" target="_blank" rel="noopener" className="font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.1em] text-[#e8833a] hover:text-[#f5a623] transition-colors">
-                      {service.cta} →
-                    </a>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
+
 
         {/* Experience */}
         <section id="experience" className="py-24">
@@ -292,10 +264,10 @@ export default function Home() {
               <motion.div variants={fadeUp} custom={0} className="mb-10">
                 <LogoHeading silver="EDUCA" orange="TION" />
               </motion.div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
                   { degree: "Master of Divinity", school: "SA Theological Seminary", year: "2025 — In Progress", current: true, desc: "Research Focus: Pastoral Emotional Strain & AI-Assisted Care Systems in Ministry Contexts." },
-                  { degree: "LLB (Hons)", school: "University of South Africa", year: "Completed", current: false, desc: "Applied across AI governance, contract frameworks, compliance advisory, and ethical AI deployment." },
+
                   { degree: "B.Sc. (Hons) Molecular Microbiology", school: "Stellenbosch University", year: "2002", current: false, desc: "Foundation in biomarker research and systems biology — informs data-driven approaches to health tech." },
                   { degree: "Bachelor of Science", school: "Stellenbosch University", year: "1999 — 2001", current: false, desc: "" },
                   { degree: "Cert. Digital Marketing", school: "Elite Inc.", year: "2019", current: false, desc: "" },
@@ -341,7 +313,6 @@ export default function Home() {
                 <h4 className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.15em] text-[#d8dce4] mb-4">Quick Links</h4>
                 <div className="space-y-2 text-sm text-[#6b7080]">
                   <a href="#ai" className="block hover:text-[#e8833a] transition-colors">AI & Automation</a>
-                  <a href="#counselling" className="block hover:text-[#e8833a] transition-colors">Counselling & Ministry</a>
                   <a href="#experience" className="block hover:text-[#e8833a] transition-colors">Experience</a>
                   <a href="#portfolio" className="block hover:text-[#e8833a] transition-colors">Portfolio</a>
                   <a href="#education" className="block hover:text-[#e8833a] transition-colors">Education</a>
