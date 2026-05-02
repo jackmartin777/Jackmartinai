@@ -29,47 +29,47 @@
   --color-ring: var(--ring);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
-  --font-display: 'Baloo 2', cursive;
+
+  /* Fonts — matched to logo */
+  --font-heading: 'Montserrat', sans-serif;
   --font-body: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-
-  /* Logo-matched palette */
-  --color-navy: oklch(0.11 0.03 250);
-  --color-navy-light: oklch(0.15 0.035 250);
-  --color-burnt-orange: oklch(0.72 0.17 55);
-  --color-silver: oklch(0.78 0.005 250);
-  --color-silver-light: oklch(0.88 0.003 250);
-  --color-circuit-blue: oklch(0.65 0.15 240);
-  --color-circuit-glow: oklch(0.75 0.12 240);
 }
+
+/*
+ * LOGO COLOUR REFERENCE:
+ * Background:    #0a0f1a (very dark navy, almost black)
+ * "JACK" text:   #c8ccd4 (cool silver-grey, letter-spaced uppercase)
+ * "MARTIN" text: #e8833a (burnt orange, letter-spaced uppercase)
+ * Tagline:       #8a8f9a (muted grey, smaller weight)
+ * Circuit nodes: #2d6ca6 (deep muted blue, NOT bright sky blue)
+ * Circuit glow:  #3d8fd4 (subtle blue glow around nodes)
+ * Chrome J:      #d0d4dc (metallic silver)
+ */
 
 :root {
   --radius: 0.65rem;
-  /* Deep navy from logo background */
-  --background: oklch(0.11 0.03 250);
-  /* Silver-white from the J letterform */
-  --foreground: oklch(0.88 0.003 250);
-  --card: oklch(0.14 0.03 250);
-  --card-foreground: oklch(0.88 0.003 250);
-  --popover: oklch(0.14 0.03 250);
-  --popover-foreground: oklch(0.88 0.003 250);
-  /* Burnt orange from the M arrow */
-  --primary: oklch(0.72 0.17 55);
+  --background: oklch(0.08 0.02 250);
+  --foreground: oklch(0.82 0.005 250);
+  --card: oklch(0.1 0.02 250);
+  --card-foreground: oklch(0.82 0.005 250);
+  --popover: oklch(0.1 0.02 250);
+  --popover-foreground: oklch(0.82 0.005 250);
+  --primary: oklch(0.68 0.17 55);
   --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.15 0.03 250);
-  --secondary-foreground: oklch(0.78 0.005 250);
-  --muted: oklch(0.18 0.025 250);
-  --muted-foreground: oklch(0.55 0.01 250);
-  /* Circuit blue from the J's neural nodes */
-  --accent: oklch(0.65 0.15 240);
+  --secondary: oklch(0.12 0.02 250);
+  --secondary-foreground: oklch(0.75 0.005 250);
+  --muted: oklch(0.14 0.015 250);
+  --muted-foreground: oklch(0.5 0.008 250);
+  --accent: oklch(0.45 0.1 240);
   --accent-foreground: oklch(1 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.22 0.025 250);
-  --input: oklch(0.18 0.025 250);
-  --ring: oklch(0.72 0.17 55);
-  --sidebar: oklch(0.12 0.03 250);
-  --sidebar-foreground: oklch(0.88 0.003 250);
+  --border: oklch(0.18 0.015 250);
+  --input: oklch(0.14 0.015 250);
+  --ring: oklch(0.68 0.17 55);
+  --sidebar: oklch(0.09 0.02 250);
+  --sidebar-foreground: oklch(0.82 0.005 250);
 }
 
 @layer base {
@@ -96,19 +96,16 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
-
   .flex {
     min-height: 0;
     min-width: 0;
   }
-
   @media (min-width: 640px) {
     .container {
       padding-left: 1.5rem;
       padding-right: 1.5rem;
     }
   }
-
   @media (min-width: 1024px) {
     .container {
       padding-left: 2rem;
