@@ -67,8 +67,8 @@ export default function SocialProof() {
           className="fixed bottom-24 left-5 z-40 max-w-xs"
         >
           <div className="bg-[#0e1422] border border-[#2d6ca6]/15 rounded-lg p-4 shadow-xl shadow-black/30 flex items-start gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#e8833a]/10 flex items-center justify-center flex-shrink-0">
-              <Icon size={16} className="text-[#e8833a]" />
+            <div className="w-9 h-9 rounded-full bg-[#fb7103]/10 flex items-center justify-center flex-shrink-0">
+              <Icon size={16} className="text-[#fb7103]" />
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-[#d8dce4] text-sm font-medium leading-tight">{proof.text}</p>

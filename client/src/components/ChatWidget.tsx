@@ -69,14 +69,14 @@ export default function ChatWidget() {
           >
             <button
               onClick={() => setIsOpen(true)}
-              className="w-14 h-14 bg-gradient-to-br from-[#e8833a] to-[#d4762f] rounded-full flex items-center justify-center shadow-lg shadow-[#e8833a]/25 hover:scale-110 transition-transform"
+              className="w-14 h-14 bg-gradient-to-br from-[#fb7103] to-[#e05e00] rounded-full flex items-center justify-center shadow-lg shadow-[#fb7103]/25 hover:scale-110 transition-transform"
               aria-label="Open chat"
             >
               <MessageSquare size={24} className="text-white" />
             </button>
             <button
               onClick={() => setIsOpen(true)}
-              className="bg-[#0e1422] border border-[#e8833a]/20 text-[#e8833a] font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full shadow-lg shadow-black/20 hover:bg-[#e8833a] hover:text-white transition-colors"
+              className="bg-[#0e1422] border border-[#fb7103]/20 text-[#fb7103] font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full shadow-lg shadow-black/20 hover:bg-[#fb7103] hover:text-white transition-colors"
             >
               Ask me
             </button>
@@ -95,9 +95,9 @@ export default function ChatWidget() {
             className="fixed bottom-6 left-6 z-50 w-[360px] max-w-[calc(100vw-48px)] h-[520px] max-h-[calc(100vh-120px)] bg-[#0e1422] border border-[#2d6ca6]/15 rounded-xl shadow-2xl shadow-black/40 flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-[#2d6ca6]/10 bg-[#0a0f1a]">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-[#2d6ca6]/10 bg-[#010b1c]">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#e8833a] to-[#d4762f] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#fb7103] to-[#e05e00] flex items-center justify-center">
                   <MessageSquare size={14} className="text-white" />
                 </div>
                 <div>
@@ -116,7 +116,7 @@ export default function ChatWidget() {
                 <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div className={`max-w-[85%] rounded-lg px-3.5 py-2.5 text-sm leading-relaxed ${
                     msg.role === "user"
-                      ? "bg-[#e8833a] text-white rounded-br-sm"
+                      ? "bg-[#fb7103] text-white rounded-br-sm"
                       : "bg-[#1a2235] text-[#c8ccd4] border border-[#2d6ca6]/10 rounded-bl-sm"
                   }`}>
                     {msg.role === "assistant" ? (
@@ -137,7 +137,7 @@ export default function ChatWidget() {
             </div>
 
             {/* Input */}
-            <div className="px-3 py-3 border-t border-[#2d6ca6]/10 bg-[#0a0f1a]">
+            <div className="px-3 py-3 border-t border-[#2d6ca6]/10 bg-[#010b1c]">
               <div className="flex items-end gap-2">
                 <textarea
                   value={input}
@@ -145,13 +145,13 @@ export default function ChatWidget() {
                   onKeyDown={handleKeyDown}
                   placeholder="Type your message..."
                   rows={1}
-                  className="flex-1 resize-none bg-[#1a2235] border border-[#2d6ca6]/10 rounded-lg px-3 py-2.5 text-sm text-[#d8dce4] placeholder-[#6b7080] focus:outline-none focus:border-[#e8833a]/30 transition-colors"
+                  className="flex-1 resize-none bg-[#1a2235] border border-[#2d6ca6]/10 rounded-lg px-3 py-2.5 text-sm text-[#d8dce4] placeholder-[#6b7080] focus:outline-none focus:border-[#fb7103]/30 transition-colors"
                   style={{ maxHeight: '80px' }}
                 />
                 <button
                   onClick={handleSend}
                   disabled={!input.trim() || chatMutation.isPending}
-                  className="w-9 h-9 rounded-lg bg-[#e8833a] flex items-center justify-center text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#d4762f] transition-colors flex-shrink-0"
+                  className="w-9 h-9 rounded-lg bg-[#fb7103] flex items-center justify-center text-white disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#e05e00] transition-colors flex-shrink-0"
                 >
                   <Send size={14} />
                 </button>

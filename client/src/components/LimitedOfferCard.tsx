@@ -40,18 +40,18 @@ export default function LimitedOfferCard({
       viewport={{ once: true, margin: "-100px" }}
       variants={fadeUp}
       custom={0}
-      className="bg-gradient-to-br from-[#0e1422] to-[#0a0f1a] border border-[#e8833a]/20 rounded-lg p-8 relative overflow-hidden"
+      className="bg-gradient-to-br from-[#0e1422] to-[#010b1c] border border-[#fb7103]/20 rounded-lg p-8 relative overflow-hidden"
     >
       {/* Accent glow */}
-      <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#e8833a]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#fb7103]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="relative z-10">
         {/* Header */}
         <div className="flex items-start justify-between mb-6">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <Zap size={16} className="text-[#e8833a]" />
-              <span className="font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.15em] text-[#e8833a]">
+              <Zap size={16} className="text-[#fb7103]" />
+              <span className="font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.15em] text-[#fb7103]">
                 Limited Offer
               </span>
             </div>
@@ -60,13 +60,13 @@ export default function LimitedOfferCard({
             </h3>
           </div>
           <div className="text-right">
-            <div className="text-[#e8833a] font-bold text-2xl">R{priceZAR}</div>
+            <div className="text-[#fb7103] font-bold text-2xl">R{priceZAR}</div>
             <div className="text-[#6b7080] text-xs">50% deposit: R{depositZAR}</div>
           </div>
         </div>
 
         {/* Description */}
-        <p className="text-[#8a8f9a] text-base leading-relaxed mb-6 border-l-2 border-[#e8833a]/30 pl-4">
+        <p className="text-[#8a8f9a] text-base leading-relaxed mb-6 border-l-2 border-[#fb7103]/30 pl-4">
           {description}
         </p>
 
@@ -78,7 +78,7 @@ export default function LimitedOfferCard({
           <ul className="space-y-2">
             {includedItems.map((item, i) => (
               <li key={i} className="flex items-start gap-3 text-[#c8ccd4]/80 text-sm">
-                <CheckCircle2 size={16} className="text-[#e8833a] flex-shrink-0 mt-0.5" />
+                <CheckCircle2 size={16} className="text-[#fb7103] flex-shrink-0 mt-0.5" />
                 <span>{item}</span>
               </li>
             ))}
@@ -86,8 +86,8 @@ export default function LimitedOfferCard({
         </div>
 
         {/* Availability */}
-        <div className="mb-6 p-4 bg-[#e8833a]/5 border border-[#e8833a]/20 rounded-lg">
-          <p className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.15em] text-[#e8833a]">
+        <div className="mb-6 p-4 bg-[#fb7103]/5 border border-[#fb7103]/20 rounded-lg">
+          <p className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.15em] text-[#fb7103]">
             ⏰ Only {spotsRemaining} {spotsRemaining === 1 ? "spot" : "spots"} left this quarter
           </p>
         </div>
@@ -98,7 +98,7 @@ export default function LimitedOfferCard({
             href={bookingUrl}
             target="_blank"
             rel="noopener"
-            className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors"
+            className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors"
           >
             <Calendar size={14} /> Book Your Setup Slot
           </a>

@@ -12,12 +12,12 @@ export default function LimitedOfferBanner({ spotsRemaining, bookingUrl }: Limit
   if (dismissed) return null;
 
   return (
-    <div className="fixed top-20 left-0 right-0 z-40 bg-gradient-to-r from-[#e8833a]/10 to-[#e8833a]/5 border-b border-[#e8833a]/30 backdrop-blur-sm">
+    <div className="fixed top-20 left-0 right-0 z-40 bg-gradient-to-r from-[#fb7103]/10 to-[#fb7103]/5 border-b border-[#fb7103]/30 backdrop-blur-sm">
       <div className="container flex items-center justify-between py-3 px-4">
         <div className="flex items-center gap-3">
-          <Zap size={18} className="text-[#e8833a] flex-shrink-0" />
+          <Zap size={18} className="text-[#fb7103] flex-shrink-0" />
           <div>
-            <p className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.15em] text-[#e8833a]">
+            <p className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.15em] text-[#fb7103]">
               🚀 Limited Offer: Mac Mini M4 + Claude Code Setup
             </p>
             <p className="text-[#8a8f9a] text-xs mt-0.5">
@@ -30,7 +30,7 @@ export default function LimitedOfferBanner({ spotsRemaining, bookingUrl }: Limit
             href={bookingUrl}
             target="_blank"
             rel="noopener"
-            className="text-[#e8833a] hover:text-[#d4762f] font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] transition-colors"
+            className="text-[#fb7103] hover:text-[#e05e00] font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] transition-colors"
           >
             Learn More
           </a>
