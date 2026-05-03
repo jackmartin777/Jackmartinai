@@ -41,8 +41,7 @@ const categoryStyle: Record<string, string> = {
 function LogoHeading({ silver, orange }: { silver: string; orange: string }) {
   return (
     <h2 className="font-[family-name:var(--font-heading)] font-bold uppercase tracking-[0.2em] text-3xl md:text-4xl lg:text-5xl">
-      <span className="text-[#d8dce4]">{silver} </span>
-      <span className="text-[#fb7103]">{orange}</span>
+      <span className="text-[#d8dce4]">{silver}</span><span className="text-[#fb7103]">{orange}</span>
     </h2>
   );
 }
