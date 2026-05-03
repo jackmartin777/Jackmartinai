@@ -98,12 +98,10 @@ export default function Home() {
               {/* Stats Strip */}
               <motion.div variants={fadeUp} custom={3} className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4 mb-6 md:mb-8">
                 {[
-                  { num: "89%", label: "Pass Rate | 19 Years" },
-                  { num: "100%", label: "Real-World Experience" },
-                  { num: "10+", label: "Years AI/Digital" },
-                  { num: "15+", label: "Years Cross-Sector" },
-                  { num: "Multiple", label: "Business Experience" },
-                  { num: "3", label: "Active Ventures" },
+                  { num: "19", label: "Years Business Experience" },
+                  { num: "100%", label: "Real-World Taught" },
+                  { num: "20+", label: "Years Digital Marketing" },
+                  { num: "4", label: "Years AI Experience" },
                 ].map(stat => (
                   <div key={stat.label} className="text-center p-3 md:p-4 rounded-lg bg-[#0e1422] border border-white/5">
                     <div className="font-[family-name:var(--font-heading)] font-bold text-2xl md:text-3xl lg:text-4xl text-[#fb7103]">{stat.num}</div>
