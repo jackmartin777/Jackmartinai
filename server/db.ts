@@ -1,4 +1,4 @@
-import { eq, and, gte, lte } from "drizzle-orm";
+import { eq, and, gte, lte, gt, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, users, limitedOffers, limitedOfferBookings, InsertLimitedOfferBooking } from "../drizzle/schema";
 import { ENV } from './_core/env';
@@ -104,14 +104,20 @@ export async function getActiveLimitedOffers() {
       and(
         eq(limitedOffers.isActive, "true"),
         gte(limitedOffers.endDate, now),
-        lte(limitedOffers.startDate, now)
+        lte(limitedOffers.startDate, now),
+        gt(limitedOffers.spotsRemaining, 0)
       )
     );
 
-  return result.map(offer => ({
-    ...offer,
-    includedItems: JSON.parse(offer.includedItems),
-  }));
+  return result.map(offer => {
+    let includedItems: string[] = [];
+    try {
+      includedItems = JSON.parse(offer.includedItems);
+    } catch {
+      console.warn(`[Database] Failed to parse includedItems for offer ${offer.id}`);
+    }
+    return { ...offer, includedItems };
+  });
 }
 
 export async function createLimitedOfferBooking(booking: InsertLimitedOfferBooking) {
@@ -128,6 +134,54 @@ export async function createLimitedOfferBooking(booking: InsertLimitedOfferBooki
     console.error("[Database] Failed to create booking:", error);
     throw error;
   }
+}
+
+export async function getLimitedOfferById(offerId: number) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot get offer: database not available");
+    return undefined;
+  }
+
+  const result = await db
+    .select()
+    .from(limitedOffers)
+    .where(eq(limitedOffers.id, offerId))
+    .limit(1);
+
+  if (result.length === 0) return undefined;
+
+  const offer = result[0];
+  let includedItems: string[] = [];
+  try {
+    includedItems = JSON.parse(offer.includedItems);
+  } catch {
+    console.warn(`[Database] Failed to parse includedItems for offer ${offer.id}`);
+  }
+  return { ...offer, includedItems };
+}
+
+export async function decrementSpotsRemaining(offerId: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot decrement spots: database not available");
+    return false;
+  }
+
+  const result = await db
+    .update(limitedOffers)
+    .set({ spotsRemaining: sql`${limitedOffers.spotsRemaining} - 1` })
+    .where(
+      and(
+        eq(limitedOffers.id, offerId),
+        gt(limitedOffers.spotsRemaining, 0)
+      )
+    );
+
+  // affectedRows === 0 means no spots were available to decrement.
+  // The MySQL2 driver returns an array where the first element has affectedRows.
+  const header = result[0] as { affectedRows?: number } | undefined;
+  return (header?.affectedRows ?? 0) > 0;
 }
 
 // TODO: add feature queries here as your schema grows.

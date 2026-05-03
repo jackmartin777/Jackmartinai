@@ -3,7 +3,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { invokeLLM } from "./_core/llm";
 import { z } from "zod";
-import { getActiveLimitedOffers, createLimitedOfferBooking } from "./db";
+import { getActiveLimitedOffers, createLimitedOfferBooking, getLimitedOfferById, decrementSpotsRemaining } from "./db";
 import { COOKIE_NAME } from "@shared/const";
 
 const SYSTEM_PROMPT = `You are Jack Martin's AI assistant on his portfolio website (jackmartin.work). You represent Jack — a South African AI consultant, AI automator, and digital strategist based in Paarl, Western Cape.
@@ -54,7 +54,7 @@ If they provide details, confirm them and let them know Jack will be in touch so
 
 const messageSchema = z.object({
   role: z.enum(["user", "assistant"]),
-  content: z.string(),
+  content: z.string().max(4000),
 });
 
 export const appRouter = router({
@@ -71,7 +71,7 @@ export const appRouter = router({
   chat: router({
     send: publicProcedure
       .input(z.object({
-        messages: z.array(messageSchema),
+        messages: z.array(messageSchema).max(50),
       }))
       .mutation(async ({ input }) => {
         const llmMessages = [
@@ -103,6 +103,27 @@ export const appRouter = router({
         phone: z.string().min(1),
       }))
       .mutation(async ({ input }) => {
+        const offer = await getLimitedOfferById(input.offerId);
+        if (!offer) {
+          throw new Error("Offer not found");
+        }
+        // isActive is stored as a mysqlEnum("true" | "false") — string comparison is intentional
+        if (offer.isActive !== "true") {
+          throw new Error("This offer is no longer active");
+        }
+        const now = new Date();
+        if (offer.startDate > now || offer.endDate < now) {
+          throw new Error("This offer is not currently available");
+        }
+        if (offer.spotsRemaining <= 0) {
+          throw new Error("No spots remaining for this offer");
+        }
+
+        const decremented = await decrementSpotsRemaining(input.offerId);
+        if (!decremented) {
+          throw new Error("No spots remaining for this offer");
+        }
+
         const result = await createLimitedOfferBooking({
           offerId: input.offerId,
           name: input.name,

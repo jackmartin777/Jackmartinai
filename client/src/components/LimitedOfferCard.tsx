@@ -97,7 +97,7 @@ export default function LimitedOfferCard({
           <a
             href={bookingUrl}
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors"
           >
             <Calendar size={14} /> Book Your Setup Slot
@@ -105,7 +105,7 @@ export default function LimitedOfferCard({
           <a
             href={whatsappUrl}
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-transparent text-[#c8ccd4] border border-[#c8ccd4]/20 hover:border-[#c8ccd4]/40 transition-colors"
           >
             Questions? WhatsApp me

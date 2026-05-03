@@ -29,7 +29,7 @@ export default function LimitedOfferBanner({ spotsRemaining, bookingUrl }: Limit
           <a
             href={bookingUrl}
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             className="text-[#fb7103] hover:text-[#e05e00] font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] transition-colors"
           >
             Learn More
