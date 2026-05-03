@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Globe, Download, MessageCircle, Calendar, Brain, Heart, Scale } from "lucide-react";
-import { useAuth } from "@/_core/hooks/useAuth";
 import SocialProof from "@/components/SocialProof";
 import MobileNav from "@/components/MobileNav";
 import ChatWidget from "@/components/ChatWidget";
@@ -47,7 +46,6 @@ function LogoHeading({ silver, orange }: { silver: string; orange: string }) {
 }
 
 export default function Home() {
-  const { } = useAuth();
   const [activeFilter, setActiveFilter] = useState("All");
 
   const filteredProjects = activeFilter === "All" ? projects : projects.filter(p => p.category === activeFilter);
@@ -72,7 +70,7 @@ export default function Home() {
               <a href="#contact" className="hover:text-[#d8dce4] transition-colors">Contact</a>
             </div>
             <div className="hidden md:block">
-              <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="font-[family-name:var(--font-heading)] text-[11px] font-semibold uppercase tracking-[0.1em] px-5 py-2.5 rounded bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors flex items-center gap-2">
+              <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener noreferrer" className="font-[family-name:var(--font-heading)] text-[11px] font-semibold uppercase tracking-[0.1em] px-5 py-2.5 rounded bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors flex items-center gap-2">
                 <Calendar size={13} /> Book a Discovery Call
               </a>
             </div>
@@ -115,7 +113,7 @@ export default function Home() {
 
               {/* CTAs */}
               <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-3 mb-6 md:mb-8">
-                <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded font-[family-name:var(--font-heading)] text-xs md:text-sm font-semibold uppercase tracking-[0.1em] bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors">
+                <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded font-[family-name:var(--font-heading)] text-xs md:text-sm font-semibold uppercase tracking-[0.1em] bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors">
                   <Calendar size={16} /> Book a Discovery Call
                 </a>
                 <a href="/manus-storage/Jack_Martin_CV_Final_e1fbbd18.pdf" download="Jack_Martin_CV.pdf" className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded font-[family-name:var(--font-heading)] text-xs md:text-sm font-semibold uppercase tracking-[0.1em] bg-transparent text-[#c8ccd4] border border-[#c8ccd4]/20 hover:border-[#c8ccd4]/40 transition-colors">
@@ -138,8 +136,8 @@ export default function Home() {
                 <span className="flex items-center gap-2"><MapPin size={16} className="text-[#2d6ca6]" /> Paarl, Western Cape</span>
                 <span className="flex items-center gap-2"><Phone size={16} className="text-[#2d6ca6]" /> +27 671 334 194</span>
                 <span className="flex items-center gap-2"><Mail size={16} className="text-[#fb7103]" /> jack@jackmartin.co.za</span>
-                <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#d8dce4] transition-colors"><Linkedin size={16} className="text-[#2d6ca6]" /> LinkedIn</a>
-                <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#d8dce4] transition-colors"><Github size={16} className="text-[#c8ccd4]" /> GitHub</a>
+                <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#d8dce4] transition-colors"><Linkedin size={16} className="text-[#2d6ca6]" /> LinkedIn</a>
+                <a href="https://github.com/jackmartin777" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-[#d8dce4] transition-colors"><Github size={16} className="text-[#c8ccd4]" /> GitHub</a>
               </motion.div>
             </motion.div>
           </div>
@@ -239,7 +237,7 @@ export default function Home() {
               </motion.div>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredProjects.map((project, i) => (
-                  <motion.a key={project.name} href={project.url} target="_blank" rel="noopener" variants={fadeUp} custom={i + 2} className="group bg-[#0e1422] border border-white/[0.03] rounded-lg p-5 hover:border-[#2d6ca6]/20 transition-all duration-300 hover:-translate-y-0.5">
+                  <motion.a key={project.name} href={project.url} target="_blank" rel="noopener noreferrer" variants={fadeUp} custom={i + 2} className="group bg-[#0e1422] border border-white/[0.03] rounded-lg p-5 hover:border-[#2d6ca6]/20 transition-all duration-300 hover:-translate-y-0.5">
                     <div className="flex items-start justify-between mb-3">
                       <span className={`text-[10px] font-[family-name:var(--font-heading)] uppercase tracking-[0.15em] px-2 py-0.5 rounded border ${categoryStyle[project.category] || "text-[#6b7080] bg-white/5 border-white/10"}`}>{project.category}</span>
                       <ExternalLink size={13} className="text-[#6b7080]/30 group-hover:text-[#fb7103] transition-colors" />
@@ -327,7 +325,7 @@ export default function Home() {
                       <a
                         href="https://tidycal.com/jackmartin/15-min-call"
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors"
                       >
                         <Calendar size={14} /> Book Your Setup Slot
@@ -335,7 +333,7 @@ export default function Home() {
                       <a
                         href="https://wa.me/27671334194?text=Hi%20Jack%2C%20I%27m%20interested%20in%20the%20Mac%20Mini%20M4%20%2B%20Claude%20Code%20setup%20offer."
                         target="_blank"
-                        rel="noopener"
+                        rel="noopener noreferrer"
                         className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-transparent text-[#c8ccd4] border border-[#c8ccd4]/20 hover:border-[#c8ccd4]/40 transition-colors"
                       >
                         Questions? WhatsApp
@@ -384,7 +382,7 @@ export default function Home() {
 
 
         {/* WhatsApp */}
-        <a href="https://wa.me/27671334194" target="_blank" rel="noopener" className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/25 hover:scale-110 transition-transform" aria-label="Chat on WhatsApp">
+        <a href="https://wa.me/27671334194" target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/25 hover:scale-110 transition-transform" aria-label="Chat on WhatsApp">
           <MessageCircle size={26} className="text-white" />
         </a>
 
@@ -417,12 +415,12 @@ export default function Home() {
                   <p className="flex items-center gap-2"><Phone size={14} className="text-[#2d6ca6]" /> +27 671 334 194</p>
                   <p className="flex items-center gap-2"><MapPin size={14} className="text-[#2d6ca6]" /> Paarl, Western Cape, South Africa</p>
                   <div className="flex items-center gap-3 mt-3">
-                    <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="text-[#6b7080] hover:text-[#2d6ca6] transition-colors"><Linkedin size={18} /></a>
-                    <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="text-[#6b7080] hover:text-[#d8dce4] transition-colors"><Github size={18} /></a>
-                    <a href="https://bold.pro/my/johnhenryjack-martin" target="_blank" rel="noopener" className="text-[#6b7080] hover:text-[#fb7103] transition-colors"><Globe size={18} /></a>
+                    <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener noreferrer" className="text-[#6b7080] hover:text-[#2d6ca6] transition-colors"><Linkedin size={18} /></a>
+                    <a href="https://github.com/jackmartin777" target="_blank" rel="noopener noreferrer" className="text-[#6b7080] hover:text-[#d8dce4] transition-colors"><Github size={18} /></a>
+                    <a href="https://bold.pro/my/johnhenryjack-martin" target="_blank" rel="noopener noreferrer" className="text-[#6b7080] hover:text-[#fb7103] transition-colors"><Globe size={18} /></a>
                   </div>
                 </div>
-                <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.1em] bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors">
+                <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.1em] bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors">
                   <Calendar size={12} /> Book a Call
                 </a>
               </div>
