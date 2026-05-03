@@ -1,9 +1,10 @@
-import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { invokeLLM } from "./_core/llm";
 import { z } from "zod";
+import { getActiveLimitedOffers, createLimitedOfferBooking } from "./db";
+import { COOKIE_NAME } from "@shared/const";
 
 const SYSTEM_PROMPT = `You are Jack Martin's AI assistant on his portfolio website (jackmartin.work). You represent Jack — a South African AI consultant, AI automator, and digital strategist based in Paarl, Western Cape.
 
@@ -86,6 +87,30 @@ export const appRouter = router({
         const content = (typeof rawContent === 'string' ? rawContent : "I'm sorry, I couldn't process that. Could you try again?");
 
         return { content };
+      }),
+  }),
+
+  limitedOffers: router({
+    getActive: publicProcedure.query(async () => {
+      return await getActiveLimitedOffers();
+    }),
+
+    bookSlot: publicProcedure
+      .input(z.object({
+        offerId: z.number(),
+        name: z.string().min(1),
+        email: z.string().email(),
+        phone: z.string().min(1),
+      }))
+      .mutation(async ({ input }) => {
+        const result = await createLimitedOfferBooking({
+          offerId: input.offerId,
+          name: input.name,
+          email: input.email,
+          phone: input.phone,
+          status: "pending",
+        });
+        return { success: !!result };
       }),
   }),
 });

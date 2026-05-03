@@ -25,4 +25,37 @@ export const users = mysqlTable("users", {
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;
 
+export const limitedOffers = mysqlTable("limitedOffers", {
+  id: int("id").autoincrement().primaryKey(),
+  title: varchar("title", { length: 255 }).notNull(),
+  description: text("description").notNull(),
+  price: int("price").notNull(), // in ZAR cents (e.g., 2950000 for R29,500)
+  deposit: int("deposit").notNull(), // 50% of price
+  spotsAvailable: int("spotsAvailable").notNull().default(2),
+  spotsRemaining: int("spotsRemaining").notNull().default(2),
+  includedItems: text("includedItems").notNull(), // JSON array stored as string
+  startDate: timestamp("startDate").notNull(),
+  endDate: timestamp("endDate").notNull(),
+  isActive: mysqlEnum("isActive", ["true", "false"]).default("true").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type LimitedOffer = typeof limitedOffers.$inferSelect;
+export type InsertLimitedOffer = typeof limitedOffers.$inferInsert;
+
+export const limitedOfferBookings = mysqlTable("limitedOfferBookings", {
+  id: int("id").autoincrement().primaryKey(),
+  offerId: int("offerId").notNull(),
+  name: varchar("name", { length: 255 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 20 }).notNull(),
+  status: mysqlEnum("status", ["pending", "confirmed", "completed", "cancelled"]).default("pending").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type LimitedOfferBooking = typeof limitedOfferBookings.$inferSelect;
+export type InsertLimitedOfferBooking = typeof limitedOfferBookings.$inferInsert;
+
 // TODO: Add your tables here

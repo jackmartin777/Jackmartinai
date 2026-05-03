@@ -69,6 +69,7 @@ export default function Home() {
               <a href="#ai" className="hover:text-[#e8833a] transition-colors">AI & Automation</a>
               <a href="#experience" className="hover:text-[#d8dce4] transition-colors">Experience</a>
               <a href="#portfolio" className="hover:text-[#e8833a] transition-colors">Portfolio</a>
+              <a href="#limited-offer" className="hover:text-[#e8833a] transition-colors">Limited Offer</a>
               <a href="#contact" className="hover:text-[#d8dce4] transition-colors">Contact</a>
             </div>
             <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="font-[family-name:var(--font-heading)] text-[11px] font-semibold uppercase tracking-[0.1em] px-5 py-2.5 rounded bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors flex items-center gap-2">
@@ -253,6 +254,96 @@ export default function Home() {
                   </motion.a>
                 ))}
               </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Limited Offer */}
+        <section id="limited-offer" className="py-24 bg-[#0e1422]/40 border-y border-[#e8833a]/10">
+          <div className="container">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
+              <motion.div variants={fadeUp} custom={0} className="mb-8">
+                <LogoHeading silver="LIMITED" orange="OFFER" />
+                <p className="text-[#8a8f9a] text-base mt-3 max-w-lg">Complete AI development environment setup with Mac Mini M4 hardware included.</p>
+              </motion.div>
+              <motion.div variants={fadeUp} custom={1}>
+                <div className="bg-gradient-to-br from-[#0e1422] to-[#0a0f1a] border border-[#e8833a]/20 rounded-lg p-8 relative overflow-hidden">
+                  {/* Accent glow */}
+                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#e8833a]/5 rounded-full blur-3xl pointer-events-none" />
+
+                  <div className="relative z-10">
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div>
+                        <div className="flex items-center gap-2 mb-2">
+                          <span className="font-[family-name:var(--font-heading)] text-[10px] font-semibold uppercase tracking-[0.15em] text-[#e8833a]">🚀 Limited Offer</span>
+                        </div>
+                        <h3 className="font-[family-name:var(--font-heading)] font-bold text-xl md:text-2xl uppercase tracking-[0.05em] text-[#d8dce4]">
+                          Mac Mini M4 + Claude Code Setup
+                        </h3>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-[#e8833a] font-bold text-2xl">R29,500</div>
+                        <div className="text-[#6b7080] text-xs">50% deposit: R14,750</div>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <p className="text-[#8a8f9a] text-base leading-relaxed mb-6 border-l-2 border-[#e8833a]/30 pl-4">
+                      Complete AI development environment setup including Mac Mini M4 hardware, Claude Code IDE configuration, OpenClaw integration, hands-on training, and 14-day support. Everything you need to start building AI systems.
+                    </p>
+
+                    {/* Included Items */}
+                    <div className="mb-6">
+                      <h4 className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.15em] text-[#d8dce4] mb-3">
+                        What's Included
+                      </h4>
+                      <ul className="grid md:grid-cols-2 gap-3">
+                        {[
+                          "Mac Mini M4 hardware (fully configured & optimized)",
+                          "Claude Code IDE setup & extensions",
+                          "OpenClaw integration & workflow setup",
+                          "2-hour hands-on training session (remote or in-person Paarl)",
+                          "14-day WhatsApp + email support",
+                          "Custom automation templates (2–3 starter workflows)"
+                        ].map((item, i) => (
+                          <li key={i} className="flex items-start gap-3 text-[#c8ccd4]/80 text-sm">
+                            <span className="text-[#e8833a] mt-0.5 text-xs">✓</span>
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {/* Availability */}
+                    <div className="mb-6 p-4 bg-[#e8833a]/5 border border-[#e8833a]/20 rounded-lg">
+                      <p className="font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.15em] text-[#e8833a]">
+                        ⏰ Only 2 spots left this quarter (Q2 2026)
+                      </p>
+                    </div>
+
+                    {/* CTAs */}
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <a
+                        href="https://tidycal.com/jackmartin/15-min-call"
+                        target="_blank"
+                        rel="noopener"
+                        className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#e8833a] text-white hover:bg-[#d4762f] transition-colors"
+                      >
+                        <Calendar size={14} /> Book Your Setup Slot
+                      </a>
+                      <a
+                        href="https://wa.me/27671334194?text=Hi%20Jack%2C%20I%27m%20interested%20in%20the%20Mac%20Mini%20M4%20%2B%20Claude%20Code%20setup%20offer."
+                        target="_blank"
+                        rel="noopener"
+                        className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-transparent text-[#c8ccd4] border border-[#c8ccd4]/20 hover:border-[#c8ccd4]/40 transition-colors"
+                      >
+                        Questions? WhatsApp
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </section>

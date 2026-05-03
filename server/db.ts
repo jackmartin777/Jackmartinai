@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { eq, and, gte, lte } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, limitedOffers, limitedOfferBookings, InsertLimitedOfferBooking } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -87,6 +87,47 @@ export async function getUserByOpenId(openId: string) {
   const result = await db.select().from(users).where(eq(users.openId, openId)).limit(1);
 
   return result.length > 0 ? result[0] : undefined;
+}
+
+export async function getActiveLimitedOffers() {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot get offers: database not available");
+    return [];
+  }
+
+  const now = new Date();
+  const result = await db
+    .select()
+    .from(limitedOffers)
+    .where(
+      and(
+        eq(limitedOffers.isActive, "true"),
+        gte(limitedOffers.endDate, now),
+        lte(limitedOffers.startDate, now)
+      )
+    );
+
+  return result.map(offer => ({
+    ...offer,
+    includedItems: JSON.parse(offer.includedItems),
+  }));
+}
+
+export async function createLimitedOfferBooking(booking: InsertLimitedOfferBooking) {
+  const db = await getDb();
+  if (!db) {
+    console.warn("[Database] Cannot create booking: database not available");
+    return undefined;
+  }
+
+  try {
+    const result = await db.insert(limitedOfferBookings).values(booking);
+    return result;
+  } catch (error) {
+    console.error("[Database] Failed to create booking:", error);
+    throw error;
+  }
 }
 
 // TODO: add feature queries here as your schema grows.

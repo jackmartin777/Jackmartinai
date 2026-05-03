@@ -8,6 +8,13 @@
       "when": 1777720116267,
       "tag": "0000_fixed_xavin",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1777796659104,
+      "tag": "0001_silky_the_executioner",
+      "breakpoints": true
     }
   ]
 }
