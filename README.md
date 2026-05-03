@@ -1,51 +1,47 @@
-# Jackmartinai
+# jackmartin.work
 
-AI systems thinker with hands-on experience designing and deploying AI-driven marketing and decision systems. Strong focus on real-world application, automation, and measurable business outcomes.
+Source code for **[jackmartin.work](https://jackmartin.work)**.
 
-## Overview
-This repository contains the code and assets for **Jackmartinai**.
+## What this is
+A personal/portfolio website for Jack Martin focused on AI systems thinking, AI-driven marketing, automation, and measurable business outcomes.
 
-## Tech Stack
+## Tech stack
 - **TypeScript** (primary)
 - JavaScript
 - HTML
 - CSS
 
-## Getting Started
+## Local development
+> Commands may vary slightly depending on the framework used in this repo.
 
-### Prerequisites
-- Node.js (LTS recommended)
-- npm / pnpm / yarn
+1. Install dependencies
 
-### Install
 ```bash
 npm install
 ```
 
-### Run (development)
+2. Start the dev server
+
 ```bash
 npm run dev
 ```
 
-### Build
+3. Build for production
+
 ```bash
 npm run build
 ```
 
-### Test
+4. Preview/serve the production build (if supported)
+
 ```bash
-npm test
+npm run preview
 ```
 
-## Project Structure
-> Adjust this section to match your actual folders once the structure is finalized.
-
-- `src/` — application source code
-- `public/` — static assets
-- `tests/` — test files
-
 ## Deployment
-Document your deployment target (Vercel, Netlify, Docker, etc.) and any required environment variables.
+This repo is intended to be deployed to production at **jackmartin.work**.
+
+If you’re using a platform like Vercel/Netlify/Cloudflare Pages, configure the project’s build and output settings to match your framework, and add any required environment variables in the provider dashboard.
 
 ## License
-Add a license file if you plan to open source this project.
+If you plan to open source this website, add a `LICENSE` file. Otherwise, treat all rights as reserved.
