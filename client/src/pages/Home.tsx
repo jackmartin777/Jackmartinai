@@ -84,7 +84,7 @@ export default function Home() {
           <div className="container">
             <motion.div initial="hidden" animate="visible" className="max-w-5xl">
               <motion.p variants={fadeUp} custom={0} className="font-[family-name:var(--font-heading)] text-xs md:text-sm font-medium uppercase tracking-[0.25em] text-[#6b7080] mb-4 md:mb-6">
-                AI & Automation <span className="text-[#2d6ca6] mx-1">|</span> Digital Strategy <span className="text-[#2d6ca6] mx-1">|</span> Human-Centred Innovation
+                AI & Automation <span className="text-[#fb7103] mx-1">|</span> <span className="text-[#fb7103]">Digital Strategy</span> <span className="text-[#fb7103] mx-1">|</span> <span className="text-[#fb7103]">Human-Centred Innovation</span>
               </motion.p>
               <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-heading)] font-bold text-4xl md:text-6xl lg:text-7xl leading-[1.1] mb-4 md:mb-6 text-[#d8dce4]">
                 AI Systems That <span className="text-[#fb7103]">Actually Work.</span>
