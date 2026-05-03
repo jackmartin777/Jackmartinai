@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Github, Linkedin, Mail, MapPin, Phone, ExternalLink, Globe, Download, MessageCircle, Calendar, Brain, Heart, Scale } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import SocialProof from "@/components/SocialProof";
-
+import MobileNav from "@/components/MobileNav";
 import ChatWidget from "@/components/ChatWidget";
 
 const fadeUp = {
@@ -71,9 +71,12 @@ export default function Home() {
               <a href="#limited-offer" className="hover:text-[#fb7103] transition-colors">Limited Offer</a>
               <a href="#contact" className="hover:text-[#d8dce4] transition-colors">Contact</a>
             </div>
-            <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="font-[family-name:var(--font-heading)] text-[11px] font-semibold uppercase tracking-[0.1em] px-5 py-2.5 rounded bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors flex items-center gap-2">
-              <Calendar size={13} /> Book a Discovery Call
-            </a>
+            <div className="hidden md:block">
+              <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="font-[family-name:var(--font-heading)] text-[11px] font-semibold uppercase tracking-[0.1em] px-5 py-2.5 rounded bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors flex items-center gap-2">
+                <Calendar size={13} /> Book a Discovery Call
+              </a>
+            </div>
+            <MobileNav />
           </div>
         </nav>
 
