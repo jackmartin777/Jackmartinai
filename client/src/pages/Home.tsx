@@ -40,7 +40,7 @@ const categoryStyle: Record<string, string> = {
 
 function LogoHeading({ silver, orange }: { silver: string; orange: string }) {
   return (
-    <h2 className="font-[family-name:var(--font-heading)] font-bold uppercase tracking-[0.2em] text-2xl md:text-3xl">
+    <h2 className="font-[family-name:var(--font-heading)] font-bold uppercase tracking-[0.2em] text-3xl md:text-4xl lg:text-5xl">
       <span className="text-[#d8dce4]">{silver} </span>
       <span className="text-[#fb7103]">{orange}</span>
     </h2>
@@ -79,25 +79,25 @@ export default function Home() {
         </nav>
 
         {/* Hero Section */}
-        <section id="about" className="min-h-screen flex items-center pt-32 md:pt-24" itemScope itemType="https://schema.org/Person">
+        <section id="about" className="min-h-screen flex items-center pt-16 md:pt-12 pb-12" itemScope itemType="https://schema.org/Person">
           <meta itemProp="name" content="Jack Martin" />
           <meta itemProp="jobTitle" content="AI Consultant, AI Automator, Digital Strategist" />
           <div className="container">
             <motion.div initial="hidden" animate="visible" className="max-w-5xl">
-              <motion.p variants={fadeUp} custom={0} className="font-[family-name:var(--font-heading)] text-xs font-medium uppercase tracking-[0.25em] text-[#6b7080] mb-6">
+              <motion.p variants={fadeUp} custom={0} className="font-[family-name:var(--font-heading)] text-xs md:text-sm font-medium uppercase tracking-[0.25em] text-[#6b7080] mb-4 md:mb-6">
                 AI & Automation <span className="text-[#2d6ca6] mx-1">|</span> Digital Strategy <span className="text-[#2d6ca6] mx-1">|</span> Human-Centred Innovation
               </motion.p>
-              <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-heading)] font-bold text-2xl md:text-4xl lg:text-5xl leading-[1.15] mb-6 text-[#d8dce4]">
+              <motion.h1 variants={fadeUp} custom={1} className="font-[family-name:var(--font-heading)] font-bold text-4xl md:text-6xl lg:text-7xl leading-[1.1] mb-4 md:mb-6 text-[#d8dce4]">
                 AI Systems That <span className="text-[#fb7103]">Actually Work.</span>
               </motion.h1>
 
               {/* UVP Block */}
-              <motion.p variants={fadeUp} custom={2} className="text-sm md:text-base text-[#8a8f9a] max-w-2xl leading-relaxed mb-8 border-l-2 border-[#fb7103]/30 pl-4">
+              <motion.p variants={fadeUp} custom={2} className="text-base md:text-lg lg:text-xl text-[#8a8f9a] max-w-3xl leading-relaxed mb-6 md:mb-8 border-l-2 border-[#fb7103]/30 pl-4">
                 AI automation, digital strategy, and 15 years cross-sector delivery. Not a niche — a system.
               </motion.p>
 
               {/* Stats Strip */}
-              <motion.div variants={fadeUp} custom={3} className="grid grid-cols-3 md:grid-cols-6 gap-3 mb-8">
+              <motion.div variants={fadeUp} custom={3} className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4 mb-6 md:mb-8">
                 {[
                   { num: "98%", label: "Pass Rate" },
                   { num: "85%", label: "Employment" },
@@ -106,47 +106,47 @@ export default function Home() {
                   { num: "30+", label: "Years MyFiladelfia" },
                   { num: "3", label: "Active Ventures" },
                 ].map(stat => (
-                  <div key={stat.label} className="text-center p-3 rounded-lg bg-[#0e1422] border border-white/5">
-                    <div className="font-[family-name:var(--font-heading)] font-bold text-xl md:text-2xl text-[#fb7103]">{stat.num}</div>
-                    <div className="text-[#6b7080] text-[10px] font-[family-name:var(--font-heading)] uppercase tracking-[0.1em]">{stat.label}</div>
+                  <div key={stat.label} className="text-center p-3 md:p-4 rounded-lg bg-[#0e1422] border border-white/5">
+                    <div className="font-[family-name:var(--font-heading)] font-bold text-2xl md:text-3xl lg:text-4xl text-[#fb7103]">{stat.num}</div>
+                    <div className="text-[#6b7080] text-[9px] md:text-[10px] font-[family-name:var(--font-heading)] uppercase tracking-[0.1em]">{stat.label}</div>
                   </div>
                 ))}
               </motion.div>
 
               {/* CTAs */}
-              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-3 mb-8">
-                <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="inline-flex items-center gap-2 px-6 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors">
-                  <Calendar size={14} /> Book a Discovery Call
+              <motion.div variants={fadeUp} custom={4} className="flex flex-wrap gap-3 mb-6 md:mb-8">
+                <a href="https://tidycal.com/jackmartin/15-min-call" target="_blank" rel="noopener" className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded font-[family-name:var(--font-heading)] text-xs md:text-sm font-semibold uppercase tracking-[0.1em] bg-[#fb7103] text-white hover:bg-[#e05e00] transition-colors">
+                  <Calendar size={16} /> Book a Discovery Call
                 </a>
-                <a href="/manus-storage/Jack_Martin_CV_Final_e1fbbd18.pdf" download="Jack_Martin_CV.pdf" className="inline-flex items-center gap-2 px-5 py-3 rounded font-[family-name:var(--font-heading)] text-xs font-semibold uppercase tracking-[0.1em] bg-transparent text-[#c8ccd4] border border-[#c8ccd4]/20 hover:border-[#c8ccd4]/40 transition-colors">
-                  <Download size={14} /> Download CV
+                <a href="/manus-storage/Jack_Martin_CV_Final_e1fbbd18.pdf" download="Jack_Martin_CV.pdf" className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded font-[family-name:var(--font-heading)] text-xs md:text-sm font-semibold uppercase tracking-[0.1em] bg-transparent text-[#c8ccd4] border border-[#c8ccd4]/20 hover:border-[#c8ccd4]/40 transition-colors">
+                  <Download size={16} /> Download CV
                 </a>
               </motion.div>
 
               {/* 3-Button Audience Routing */}
-              <motion.div variants={fadeUp} custom={5} className="flex flex-wrap gap-3 mb-10">
-                <a href="#ai" className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0e1422] border border-[#fb7103]/15 text-[#c8ccd4] text-sm hover:border-[#fb7103]/40 transition-colors">
-                  <Brain size={16} className="text-[#fb7103]" /> I need AI systems built
+              <motion.div variants={fadeUp} custom={5} className="flex flex-wrap gap-3 mb-8 md:mb-10">
+                <a href="#ai" className="flex items-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-lg bg-[#0e1422] border border-[#fb7103]/15 text-[#c8ccd4] text-sm md:text-base hover:border-[#fb7103]/40 transition-colors">
+                  <Brain size={18} className="text-[#fb7103]" /> I need AI systems built
                 </a>
-                <a href="#portfolio" className="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-[#0e1422] border border-[#2d6ca6]/15 text-[#c8ccd4] text-sm hover:border-[#2d6ca6]/40 transition-colors">
-                  <Scale size={16} className="text-[#3d8fd4]" /> I want digital strategy consulting
+                <a href="#portfolio" className="flex items-center gap-2 px-4 md:px-5 py-2.5 md:py-3 rounded-lg bg-[#0e1422] border border-[#2d6ca6]/15 text-[#c8ccd4] text-sm md:text-base hover:border-[#2d6ca6]/40 transition-colors">
+                  <Scale size={18} className="text-[#3d8fd4]" /> I want digital strategy consulting
                 </a>
               </motion.div>
 
               {/* Contact Info */}
-              <motion.div variants={fadeUp} custom={6} className="flex flex-wrap gap-5 text-sm text-[#6b7080]">
-                <span className="flex items-center gap-2"><MapPin size={14} className="text-[#2d6ca6]" /> Paarl, Western Cape</span>
-                <span className="flex items-center gap-2"><Phone size={14} className="text-[#2d6ca6]" /> +27 671 334 194</span>
-                <span className="flex items-center gap-2"><Mail size={14} className="text-[#fb7103]" /> jack@jackmartin.co.za</span>
-                <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#d8dce4] transition-colors"><Linkedin size={14} className="text-[#2d6ca6]" /> LinkedIn</a>
-                <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#d8dce4] transition-colors"><Github size={14} className="text-[#c8ccd4]" /> GitHub</a>
+              <motion.div variants={fadeUp} custom={6} className="flex flex-wrap gap-5 md:gap-8 text-sm md:text-base text-[#6b7080]">
+                <span className="flex items-center gap-2"><MapPin size={16} className="text-[#2d6ca6]" /> Paarl, Western Cape</span>
+                <span className="flex items-center gap-2"><Phone size={16} className="text-[#2d6ca6]" /> +27 671 334 194</span>
+                <span className="flex items-center gap-2"><Mail size={16} className="text-[#fb7103]" /> jack@jackmartin.co.za</span>
+                <a href="https://linkedin.com/in/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#d8dce4] transition-colors"><Linkedin size={16} className="text-[#2d6ca6]" /> LinkedIn</a>
+                <a href="https://github.com/jackmartin777" target="_blank" rel="noopener" className="flex items-center gap-2 hover:text-[#d8dce4] transition-colors"><Github size={16} className="text-[#c8ccd4]" /> GitHub</a>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
         {/* AI & Automation */}
-        <section id="ai" className="py-24">
+        <section id="ai" className="py-16 md:py-20">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
               <motion.div variants={fadeUp} custom={0} className="mb-8">
@@ -188,7 +188,7 @@ export default function Home() {
 
 
         {/* Experience */}
-        <section id="experience" className="py-24">
+        <section id="experience" className="py-16 md:py-20">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
               <motion.div variants={fadeUp} custom={0} className="mb-10">
@@ -222,7 +222,7 @@ export default function Home() {
         </section>
 
         {/* Portfolio with Filter Tabs */}
-        <section id="portfolio" className="py-24">
+        <section id="portfolio" className="py-16 md:py-20">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
               <motion.div variants={fadeUp} custom={0} className="mb-8">
@@ -259,7 +259,7 @@ export default function Home() {
         </section>
 
         {/* Limited Offer */}
-        <section id="limited-offer" className="py-24 bg-[#0e1422]/40 border-y border-[#fb7103]/10">
+        <section id="limited-offer" className="py-16 md:py-20 bg-[#0e1422]/40 border-y border-[#fb7103]/10">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
               <motion.div variants={fadeUp} custom={0} className="mb-8">
@@ -349,7 +349,7 @@ export default function Home() {
         </section>
 
         {/* Education */}
-        <section id="education" className="py-24">
+        <section id="education" className="py-16 md:py-20">
           <div className="container">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
               <motion.div variants={fadeUp} custom={0} className="mb-10">
